@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://sppg1j2pdq57"]
+
+[ext_resource type="Script" uid="uid://b10wwmkpj8bvg" path="res://scenes/ents/dolly/dolly.gd" id="1_35j3f"]
+[ext_resource type="Texture2D" uid="uid://c53s4ko7vlbi" path="res://assets/placeholders/icon.svg" id="1_r4qig"]
+[ext_resource type="Script" uid="uid://p6em5qfoh1wo" path="res://scenes/ents/dolly/dolly_movement.gd" id="3_cof5m"]
+[ext_resource type="Script" uid="uid://bn3ryuux14kh6" path="res://scenes/ents/dolly/dolly_pick_up.gd" id="4_lg6ot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uk3g"]
+size = Vector2(130, 134)
+
+[node name="Dolly" type="CharacterBody2D" unique_id=1601336592 node_paths=PackedStringArray("dolly_movement", "dolly_pick_up")]
+script = ExtResource("1_35j3f")
+dolly_movement = NodePath("DollyMovement")
+dolly_pick_up = NodePath("DollyPickUp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=4114295]
+texture = ExtResource("1_r4qig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2043454578]
+shape = SubResource("RectangleShape2D_1uk3g")
+
+[node name="DollyMovement" type="Node2D" parent="." unique_id=1797003254 node_paths=PackedStringArray("dolly")]
+script = ExtResource("3_cof5m")
+dolly = NodePath("..")
+
+[node name="DollyPickUp" type="Node2D" parent="." unique_id=1235472174]
+script = ExtResource("4_lg6ot")
+
+[node name="RequestBoxDelayTimer" type="Timer" parent="DollyPickUp" unique_id=197038608]
+unique_name_in_owner = true
