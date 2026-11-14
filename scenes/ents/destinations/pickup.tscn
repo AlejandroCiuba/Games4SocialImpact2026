@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://33otkf2hvjdh"]
 
-[ext_resource type="Script" uid="uid://d27qv3ebftkge" path="res://scenes/ents/destinations/pickup.gd" id="1_7cqbe"]
+[ext_resource type="Script" uid="uid://bski8ek6lxlgi" path="res://scenes/ents/destinations/pickup.gd" id="1_7cqbe"]
 [ext_resource type="Texture2D" uid="uid://c53s4ko7vlbi" path="res://assets/placeholders/icon.svg" id="2_gyxxy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uk3g"]
@@ -9,8 +9,9 @@ size = Vector2(136, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
 size = Vector2(130, 128)
 
-[node name="PickUp" type="Node2D" unique_id=1010414300]
+[node name="PickUp" type="Node2D" unique_id=772234123]
 script = ExtResource("1_7cqbe")
+metadata/_custom_type_script = "uid://d285mlq1x0t2w"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1188049629]
 texture = ExtResource("2_gyxxy")

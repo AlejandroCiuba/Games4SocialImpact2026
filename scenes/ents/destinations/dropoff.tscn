@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ktbek631qo4n"]
+
+[ext_resource type="Script" uid="uid://dicljwjsdaktg" path="res://scenes/ents/destinations/dropoff.gd" id="1_joern"]
+[ext_resource type="Texture2D" uid="uid://c53s4ko7vlbi" path="res://assets/placeholders/icon.svg" id="2_re1fi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uk3g"]
+size = Vector2(136, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
+size = Vector2(130, 128)
+
+[node name="DropOff" type="Node2D" unique_id=320559756]
+script = ExtResource("1_joern")
+metadata/_custom_type_script = "uid://d285mlq1x0t2w"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1188049629]
+texture = ExtResource("2_re1fi")
+
+[node name="BoxPlatform" type="StaticBody2D" parent="." unique_id=610567589]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxPlatform" unique_id=1490625776]
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_1uk3g")
+debug_color = Color(0.7303025, 0.29294345, 0.9222649, 0.41960785)
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=371039159]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=242158419]
+shape = SubResource("RectangleShape2D_6qf70")
