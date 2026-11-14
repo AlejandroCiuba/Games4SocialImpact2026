@@ -10,3 +10,8 @@ enum Status {
 }
 
 var curr_status: Status
+
+
+func _physics_process(delta: float) -> void:
+	if global_position.y >= 650.0:
+		queue_free()
