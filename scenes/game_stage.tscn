@@ -36,6 +36,7 @@ drop_off_area = NodePath("../../Destinations/DropOff/DollyDropOffArea")
 [node name="PickUpDest" parent="Destinations/PickUp" unique_id=1010414300 node_paths=PackedStringArray("stop_point") instance=ExtResource("2_rayhu")]
 unique_name_in_owner = true
 position = Vector2(85, 500)
+box_spawn_time = 2.0
 stop_point = NodePath("PickUpStopPoint")
 
 [node name="PickUpStopPoint" type="Node2D" parent="Destinations/PickUp/PickUpDest" unique_id=1856964625]
@@ -46,7 +47,7 @@ position = Vector2(85, 215)
 
 [node name="DollyPickUpArea" type="Area2D" parent="Destinations/PickUp" unique_id=1314625608]
 position = Vector2(173, 501)
-collision_layer = 2
+collision_layer = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destinations/PickUp/DollyPickUpArea" unique_id=2041116011]
@@ -62,6 +63,8 @@ position = Vector2(220, 215)
 [node name="DropOffDest" parent="Destinations/DropOff" unique_id=320559756 node_paths=PackedStringArray("stop_point") instance=ExtResource("5_2t44s")]
 unique_name_in_owner = true
 position = Vector2(1070, 501)
+max_boxes = 2
+delivery_time = 5.0
 stop_point = NodePath("DropOffStopPoint")
 
 [node name="DropOffStopPoint" type="Node2D" parent="Destinations/DropOff/DropOffDest" unique_id=359083565]
@@ -73,7 +76,7 @@ position = Vector2(1070, 215)
 
 [node name="DollyDropOffArea" type="Area2D" parent="Destinations/DropOff" unique_id=1443974356]
 position = Vector2(924, 501)
-collision_layer = 2
+collision_layer = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destinations/DropOff/DollyDropOffArea" unique_id=1713325357]
@@ -86,5 +89,8 @@ unique_name_in_owner = true
 [node name="BoxTimer" type="Timer" parent="." unique_id=701111330]
 unique_name_in_owner = true
 autostart = true
+
+[node name="DeliveryTimer" type="Timer" parent="." unique_id=571891587]
+unique_name_in_owner = true
 
 [editable path="Dolly"]
