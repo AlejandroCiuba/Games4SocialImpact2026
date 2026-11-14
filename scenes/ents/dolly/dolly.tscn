@@ -4,14 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://c53s4ko7vlbi" path="res://assets/placeholders/icon.svg" id="1_r4qig"]
 [ext_resource type="Script" uid="uid://p6em5qfoh1wo" path="res://scenes/ents/dolly/dolly_movement.gd" id="3_cof5m"]
 [ext_resource type="Script" uid="uid://bn3ryuux14kh6" path="res://scenes/ents/dolly/dolly_pick_up.gd" id="4_lg6ot"]
+[ext_resource type="Script" uid="uid://d3q0mm03j8nh0" path="res://scenes/ents/dolly/dolly_drop_off.gd" id="5_2gaht"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uk3g"]
 size = Vector2(130, 134)
 
-[node name="Dolly" type="CharacterBody2D" unique_id=1601336592 node_paths=PackedStringArray("dolly_movement", "dolly_pick_up")]
+[node name="Dolly" type="CharacterBody2D" unique_id=1601336592 node_paths=PackedStringArray("dolly_movement", "dolly_pick_up", "dolly_drop_off")]
 script = ExtResource("1_35j3f")
 dolly_movement = NodePath("DollyMovement")
 dolly_pick_up = NodePath("DollyPickUp")
+dolly_drop_off = NodePath("DollyDropOff")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=4114295]
 texture = ExtResource("1_r4qig")
@@ -27,4 +29,10 @@ dolly = NodePath("..")
 script = ExtResource("4_lg6ot")
 
 [node name="RequestBoxDelayTimer" type="Timer" parent="DollyPickUp" unique_id=197038608]
+unique_name_in_owner = true
+
+[node name="DollyDropOff" type="Node2D" parent="." unique_id=989754542]
+script = ExtResource("5_2gaht")
+
+[node name="DropOffDelayTimer" type="Timer" parent="DollyDropOff" unique_id=321762680]
 unique_name_in_owner = true
