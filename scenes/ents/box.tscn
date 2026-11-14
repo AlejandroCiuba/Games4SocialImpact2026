@@ -8,7 +8,7 @@ size = Vector2(22, 22)
 
 [node name="Box" type="RigidBody2D" unique_id=2027577618]
 collision_layer = 8
-collision_mask = 15
+collision_mask = 31
 contact_monitor = true
 max_contacts_reported = 2
 script = ExtResource("1_yc3p3")
@@ -19,3 +19,5 @@ texture = ExtResource("2_d87s2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1507731744]
 shape = SubResource("RectangleShape2D_6qf70")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

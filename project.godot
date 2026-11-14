@@ -34,6 +34,7 @@ click={
 2d_physics/layer_2="PickUp"
 2d_physics/layer_3="DropOff"
 2d_physics/layer_4="Boxes"
+2d_physics/layer_5="Walls"
 
 [physics]
 

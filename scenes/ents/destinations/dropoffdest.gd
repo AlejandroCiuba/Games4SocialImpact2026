@@ -19,8 +19,6 @@ func return_for_delivery() -> void:
 func deliver_boxes(boxes: Array[Node]) -> void:
 
 	hide()
-
-	box_count = 0
 	out_for_delivery = true
 
 	var total_payment: int = 0
@@ -30,3 +28,4 @@ func deliver_boxes(boxes: Array[Node]) -> void:
 
 	print_debug("Payment Given: ", total_payment)
 	give_payment.emit(total_payment)
+	box_count = 0

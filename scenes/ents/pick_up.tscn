@@ -5,26 +5,34 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
 size = Vector2(76, 134)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uo4iu"]
+size = Vector2(20, 364)
+
 [node name="PickUp" type="Node2D" unique_id=193954979]
 
 [node name="PickUpDest" parent="." unique_id=772234123 node_paths=PackedStringArray("stop_point") instance=ExtResource("1_p1oap")]
 unique_name_in_owner = true
-position = Vector2(85, 500)
-box_spawn_time = 2.0
 stop_point = NodePath("PickUpStopPoint")
 
 [node name="PickUpStopPoint" type="Node2D" parent="PickUpDest" unique_id=538119949]
-position = Vector2(135, 0)
+position = Vector2(130, 0)
 
 [node name="DollyPickUpArea" type="Area2D" parent="." unique_id=543754996]
-position = Vector2(173, 501)
+position = Vector2(130, 0)
 collision_layer = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DollyPickUpArea" unique_id=512932293]
-position = Vector2(28, 0)
 shape = SubResource("RectangleShape2D_6qf70")
 
 [node name="BoxDollyMovePoint" type="Node2D" parent="." unique_id=593497997]
 unique_name_in_owner = true
-position = Vector2(220, 215)
+position = Vector2(130, -212)
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1961670407]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=694783101]
+position = Vector2(77, -118)
+shape = SubResource("RectangleShape2D_uo4iu")

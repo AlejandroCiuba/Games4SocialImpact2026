@@ -13,4 +13,3 @@ unique_name_in_owner = true
 autostart = true
 
 [node name="BoxSpawnPoint" type="Node2D" parent="." unique_id=243687692]
-position = Vector2(85, 215)
