@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://0xtqhyge5hnm"]
+
+[ext_resource type="Script" uid="uid://cv1xyxrj3ypti" path="res://scenes/box_spawner.gd" id="1_0bwl0"]
+[ext_resource type="PackedScene" uid="uid://1882l0x3dk6q" path="res://scenes/ents/box.tscn" id="2_kuow0"]
+
+[node name="BoxSpawner" type="Node2D" unique_id=2002777395 node_paths=PackedStringArray("box_spawn_point")]
+script = ExtResource("1_0bwl0")
+box_spawn_point = NodePath("BoxSpawnPoint")
+box_scene = ExtResource("2_kuow0")
+
+[node name="BoxTimer" type="Timer" parent="." unique_id=2011492094]
+unique_name_in_owner = true
+autostart = true
+
+[node name="BoxSpawnPoint" type="Node2D" parent="." unique_id=243687692]
+position = Vector2(85, 215)

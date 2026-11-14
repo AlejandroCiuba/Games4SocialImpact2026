@@ -1,22 +1,16 @@
 extends Node2D
 
-signal box_spawned(box: Box)
 
+@export_category("Main Actors")
+@export var dolly: Dolly
+@export var pickup: PickUpDest
+@export var dropoff: DropOffDest
+@export var box_spawner: BoxSpawner
 
-@export_category("Boxes")
-@export var box_spawn_point: Node2D
-@export var box_scene: PackedScene
+@export_category("Locations")
+@export var box_dolly_point: Node2D
+@export var box_dolly_drop_point: Node2D
 
-
-@onready var dolly: Dolly = %Dolly
-
-@onready var pickup: PickUp = %PickUpDest
-@onready var dropoff: DropOff = %DropOffDest
-
-@onready var box_dolly_point: Node2D = %BoxDollyMovePoint
-@onready var box_dolly_drop_point: Node2D = %BoxDollyDropPoint
-
-@onready var box_timer: Timer = %BoxTimer
 @onready var delivery_timer: Timer = %DeliveryTimer
 @onready var boxes: Node2D = %Boxes
 
@@ -27,26 +21,6 @@ func _on_box_deleted(box: Box) -> void:
 			pickup.box_count -= 1
 		Box.Status.DROPOFF:
 			dropoff.box_count -= 1
-
-
-func _spawn_box() -> void:
-
-	var b: Box = box_scene.instantiate() as Box
-	boxes.add_child(b)
-
-	b.delete_box.connect(_on_box_deleted)
-
-	if box_spawn_point != null:
-		b.global_position = box_spawn_point.global_position
-	else:
-		print_debug("No box spawn point")
-		b.global_position.y = global_position.y + 500.0
-
-	await b.body_entered
-	b.curr_status = Box.Status.PICKUP
-
-	pickup.box_count += 1
-	box_spawned.emit(b)
 
 
 func _on_boxes_dropped(amount: int) -> void:
@@ -99,9 +73,12 @@ func _on_boxes_requested(amount: int) -> void:
 	)
 
 
-func _on_box_timer_timeout() -> void:
-	if pickup.box_count < pickup.max_boxes:
-		_spawn_box()
+func _on_box_spawned(box: Box) -> void:
+	match box.curr_status:
+		Box.Status.PICKUP:
+			pickup.box_count += 1
+		Box.Status.DROPOFF:
+			dropoff.box_count += 1
 
 
 func _on_delivery_timer_timeout() -> void:
@@ -116,5 +93,4 @@ func _ready() -> void:
 	delivery_timer.wait_time = dropoff.delivery_time
 	delivery_timer.timeout.connect(_on_delivery_timer_timeout)
 
-	box_timer.wait_time = pickup.box_spawn_time
-	box_timer.timeout.connect(_on_box_timer_timeout)
+	box_spawner.box_spawned.connect(_on_box_spawned)
