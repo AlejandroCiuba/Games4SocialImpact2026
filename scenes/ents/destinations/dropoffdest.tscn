@@ -1,27 +1,32 @@
 [gd_scene format=3 uid="uid://ktbek631qo4n"]
 
 [ext_resource type="Script" uid="uid://dicljwjsdaktg" path="res://scenes/ents/destinations/dropoffdest.gd" id="1_joern"]
-[ext_resource type="Texture2D" uid="uid://c53s4ko7vlbi" path="res://assets/placeholders/icon.svg" id="2_re1fi"]
+[ext_resource type="Texture2D" uid="uid://bgvwb3e0fha33" path="res://assets/Sprites/TruckOpen.png" id="2_ux5ki"]
+[ext_resource type="Texture2D" uid="uid://cxva8ulgv2tgl" path="res://assets/Sprites/EmptyGate.png" id="2_wiqai"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uk3g"]
-size = Vector2(136, 70)
+size = Vector2(124, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
-size = Vector2(130, 128)
+size = Vector2(212, 233)
 
 [node name="DropOff" type="Node2D" unique_id=320559756]
 script = ExtResource("1_joern")
 metadata/_custom_type_script = "uid://d285mlq1x0t2w"
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1152491190]
+position = Vector2(5, 12)
+texture = ExtResource("2_wiqai")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1188049629]
-texture = ExtResource("2_re1fi")
+texture = ExtResource("2_ux5ki")
 
 [node name="BoxPlatform" type="StaticBody2D" parent="." unique_id=610567589]
 collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoxPlatform" unique_id=1490625776]
-position = Vector2(0, -26)
+position = Vector2(-4, 66.5)
 shape = SubResource("RectangleShape2D_1uk3g")
 debug_color = Color(0.7303025, 0.29294345, 0.9222649, 0.41960785)
 
@@ -32,4 +37,5 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=242158419]
+position = Vector2(-3, 2.5)
 shape = SubResource("RectangleShape2D_6qf70")

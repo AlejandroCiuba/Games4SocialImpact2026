@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://sppg1j2pdq57"]
 
 [ext_resource type="Script" uid="uid://b10wwmkpj8bvg" path="res://scenes/ents/dolly/dolly.gd" id="1_35j3f"]
-[ext_resource type="Texture2D" uid="uid://5leer45t5bf8" path="res://assets/placeholders/dolly.png" id="2_2gaht"]
+[ext_resource type="Texture2D" uid="uid://d07hoydd1umt6" path="res://assets/Sprites/Dolly.png" id="2_2gaht"]
 [ext_resource type="Script" uid="uid://p6em5qfoh1wo" path="res://scenes/ents/dolly/dolly_movement.gd" id="3_cof5m"]
 [ext_resource type="Script" uid="uid://bn3ryuux14kh6" path="res://scenes/ents/dolly/dolly_pick_up.gd" id="4_lg6ot"]
 [ext_resource type="Script" uid="uid://d3q0mm03j8nh0" path="res://scenes/ents/dolly/dolly_drop_off.gd" id="5_2gaht"]
@@ -17,7 +17,7 @@ scale = Vector2(0.39999986, 0.39999986)
 texture = ExtResource("2_2gaht")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1440133575]
-polygon = PackedVector2Array(-80, 21, 63, 20, 82, -38, 75, -39, 55, 12, -4, 16, -72, 12, -80, 5)
+polygon = PackedVector2Array(-29, -36, -17, 35, 26, 43, 39, 1, 27, 0, 18, 36, -12, 28, -22, -38)
 
 [node name="DollyMovement" type="Node2D" parent="." unique_id=1797003254 node_paths=PackedStringArray("dolly", "dolly_sprite")]
 script = ExtResource("3_cof5m")

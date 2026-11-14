@@ -47,9 +47,9 @@ func _physics_process(delta: float) -> void:
 		dolly.move_and_collide(dolly.velocity)
 
 		if dolly.velocity.x > 0.0:
-			dolly_sprite.flip_h = true
-		else:
 			dolly_sprite.flip_h = false
+		else:
+			dolly_sprite.flip_h = true
 
 
 	else:
