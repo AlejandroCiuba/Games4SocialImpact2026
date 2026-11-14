@@ -1,7 +1,10 @@
 extends RigidBody2D
 class_name Box
 
-@export var box_data: BoxData
+signal delete_box(box: Box)
+
+@export_category("Box Settings")
+@export var value: int = 1
 
 enum Status {
 	PICKUP,
@@ -12,6 +15,9 @@ enum Status {
 var curr_status: Status
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+
 	if global_position.y >= 650.0:
+
+		delete_box.emit(self)
 		queue_free()
