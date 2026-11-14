@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b425nu1tvq4en"]
+
+[ext_resource type="Script" uid="uid://d285mlq1x0t2w" path="res://scenes/ents/destinations/destination.gd" id="1_61b5a"]
+[ext_resource type="Texture2D" uid="uid://c53s4ko7vlbi" path="res://assets/placeholders/icon.svg" id="1_ot7h8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
+size = Vector2(130, 128)
+
+[node name="Destination" type="Node2D" unique_id=1010414300]
+script = ExtResource("1_61b5a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1188049629]
+texture = ExtResource("1_ot7h8")
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=371039159]
+unique_name_in_owner = true
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=242158419]
+shape = SubResource("RectangleShape2D_6qf70")
