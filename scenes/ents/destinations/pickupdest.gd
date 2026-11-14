@@ -1,5 +1,5 @@
 extends Destination
-class_name PickUp
+class_name PickUpDest
 
 @export_category("Settings")
 @export var box_spawn_time: float = 5.0

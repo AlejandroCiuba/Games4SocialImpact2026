@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ktbek631qo4n"]
 
-[ext_resource type="Script" uid="uid://dicljwjsdaktg" path="res://scenes/ents/destinations/dropoff.gd" id="1_joern"]
+[ext_resource type="Script" uid="uid://dicljwjsdaktg" path="res://scenes/ents/destinations/dropoffdest.gd" id="1_joern"]
 [ext_resource type="Texture2D" uid="uid://c53s4ko7vlbi" path="res://assets/placeholders/icon.svg" id="2_re1fi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uk3g"]

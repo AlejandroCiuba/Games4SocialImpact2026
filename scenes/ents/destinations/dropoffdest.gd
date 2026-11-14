@@ -1,5 +1,5 @@
 extends Destination
-class_name DropOff
+class_name DropOffDest
 
 signal give_payment(value: int)
 
