@@ -9,13 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://x6hmbqvcwrm0" path="res://scenes/ents/drop_off.tscn" id="5_klww0"]
 [ext_resource type="AudioStream" uid="uid://b1olvyve8amow" path="res://assets/music/dolly_gameplay_final.wav" id="5_pwlhs"]
 [ext_resource type="PackedScene" uid="uid://0xtqhyge5hnm" path="res://scenes/environment/box_spawner.tscn" id="6_klww0"]
+[ext_resource type="PackedScene" uid="uid://kie8wa4ajcg6" path="res://scenes/menus/upgrade_menu.tscn" id="10_b0v2t"]
 
-[node name="GameStage" type="Node2D" unique_id=1401212467 node_paths=PackedStringArray("dolly", "pickup", "dropoff", "box_spawner", "box_dolly_point", "box_dolly_drop_point")]
+[node name="GameStage" type="Node2D" unique_id=1401212467 node_paths=PackedStringArray("dolly", "pickup", "dropoff", "box_spawner", "menu", "box_dolly_point", "box_dolly_drop_point")]
 script = ExtResource("1_lbwk6")
 dolly = NodePath("Dolly")
 pickup = NodePath("Destinations/PickUp/PickUpDest")
 dropoff = NodePath("Destinations/DropOff/DropOffDest")
 box_spawner = NodePath("BoxSpawner")
+menu = NodePath("Control/Upgrade Menu")
 box_dolly_point = NodePath("Destinations/PickUp/BoxDollyMovePoint")
 box_dolly_drop_point = NodePath("Destinations/DropOff/BoxDollyDropPoint")
 
@@ -84,6 +86,11 @@ box_spawn_time = 0.75
 
 [node name="Boxes" type="Node2D" parent="." unique_id=330025506]
 unique_name_in_owner = true
+
+[node name="Control" type="CanvasLayer" parent="." unique_id=292939062]
+
+[node name="Upgrade Menu" parent="Control" unique_id=605773139 instance=ExtResource("10_b0v2t")]
+mouse_filter = 1
 
 [editable path="Destinations/PickUp"]
 [editable path="Destinations/DropOff"]

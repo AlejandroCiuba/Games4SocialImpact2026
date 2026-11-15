@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://kie8wa4ajcg6"]
+
+[ext_resource type="Script" uid="uid://bm4tipap5dihw" path="res://scenes/menus/upgrade_menu.gd" id="1_j4pd8"]
+[ext_resource type="AudioStream" uid="uid://cgx8pal4wjadk" path="res://assets/sfx/cash_register.wav" id="2_vsubm"]
+
+[node name="Upgrade Menu" type="Control" unique_id=605773139]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j4pd8")
+
+[node name="MenuContainer" type="PanelContainer" parent="." unique_id=1188921870]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -507.5
+offset_top = -105.0
+offset_right = 507.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UpgradeContainer" type="VBoxContainer" parent="MenuContainer" unique_id=723933243]
+layout_mode = 2
+
+[node name="Money" type="RichTextLabel" parent="MenuContainer/UpgradeContainer" unique_id=70471033]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "$$$$$"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+
+[node name="GridContainer" type="GridContainer" parent="MenuContainer/UpgradeContainer" unique_id=460375861]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 4
+
+[node name="Speed" type="HBoxContainer" parent="MenuContainer/UpgradeContainer/GridContainer" unique_id=1490199439]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MenuContainer/UpgradeContainer/GridContainer/Speed" unique_id=786543829]
+layout_mode = 2
+text = "Speed (2)"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/UpgradeContainer/GridContainer/Speed" unique_id=679930782]
+layout_mode = 2
+text = "Current:"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TableCapacity" type="HBoxContainer" parent="MenuContainer/UpgradeContainer/GridContainer" unique_id=177477975]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MenuContainer/UpgradeContainer/GridContainer/TableCapacity" unique_id=1560212126]
+layout_mode = 2
+text = "Table Capacity (1)
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/UpgradeContainer/GridContainer/TableCapacity" unique_id=1455340229]
+layout_mode = 2
+text = "Current:"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxesPerPickUp" type="HBoxContainer" parent="MenuContainer/UpgradeContainer/GridContainer" unique_id=622749198]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MenuContainer/UpgradeContainer/GridContainer/BoxesPerPickUp" unique_id=1105952030]
+layout_mode = 2
+text = "Boxes Per Pick Up (5)"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/UpgradeContainer/GridContainer/BoxesPerPickUp" unique_id=707578951]
+layout_mode = 2
+text = "Current:"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeliveryCapacity" type="HBoxContainer" parent="MenuContainer/UpgradeContainer/GridContainer" unique_id=836333220]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MenuContainer/UpgradeContainer/GridContainer/DeliveryCapacity" unique_id=1343888508]
+layout_mode = 2
+text = "Delivery Capacity (10)
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/UpgradeContainer/GridContainer/DeliveryCapacity" unique_id=176436894]
+layout_mode = 2
+text = "Current:"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxesPerDropOff" type="HBoxContainer" parent="MenuContainer/UpgradeContainer/GridContainer" unique_id=2075338451]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MenuContainer/UpgradeContainer/GridContainer/BoxesPerDropOff" unique_id=184758449]
+layout_mode = 2
+text = "Boxes Per Drop Off (4)"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/UpgradeContainer/GridContainer/BoxesPerDropOff" unique_id=861514927]
+layout_mode = 2
+text = "Current:"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxSpawn" type="HBoxContainer" parent="MenuContainer/UpgradeContainer/GridContainer" unique_id=1424804822]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MenuContainer/UpgradeContainer/GridContainer/BoxSpawn" unique_id=1089658672]
+layout_mode = 2
+text = "Box Spawn Time (15)"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/UpgradeContainer/GridContainer/BoxSpawn" unique_id=1187823288]
+layout_mode = 2
+text = "Current:"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeliveryTime" type="HBoxContainer" parent="MenuContainer/UpgradeContainer/GridContainer" unique_id=103179620]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MenuContainer/UpgradeContainer/GridContainer/DeliveryTime" unique_id=99573661]
+layout_mode = 2
+text = "Delivery Time (15)"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/UpgradeContainer/GridContainer/DeliveryTime" unique_id=426719045]
+layout_mode = 2
+text = "Current:"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BigPromotion" type="HBoxContainer" parent="MenuContainer/UpgradeContainer/GridContainer" unique_id=1378185330]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MenuContainer/UpgradeContainer/GridContainer/BigPromotion" unique_id=175795935]
+layout_mode = 2
+text = "Big Promotion (100)"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/UpgradeContainer/GridContainer/BigPromotion" unique_id=1436719768]
+layout_mode = 2
+text = "Current:"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneySound" type="AudioStreamPlayer" parent="." unique_id=993786139]
+stream = ExtResource("2_vsubm")
+bus = &"Sound Effects"
+
+[connection signal="pressed" from="MenuContainer/UpgradeContainer/GridContainer/Speed/Button" to="." method="_on_stat_pressed" binds= [0]]
+[connection signal="pressed" from="MenuContainer/UpgradeContainer/GridContainer/TableCapacity/Button" to="." method="_on_stat_pressed" binds= [1]]
+[connection signal="pressed" from="MenuContainer/UpgradeContainer/GridContainer/BoxesPerPickUp/Button" to="." method="_on_stat_pressed" binds= [2]]
+[connection signal="pressed" from="MenuContainer/UpgradeContainer/GridContainer/DeliveryCapacity/Button" to="." method="_on_stat_pressed" binds= [3]]
+[connection signal="pressed" from="MenuContainer/UpgradeContainer/GridContainer/BoxesPerDropOff/Button" to="." method="_on_stat_pressed" binds= [4]]
+[connection signal="pressed" from="MenuContainer/UpgradeContainer/GridContainer/BoxSpawn/Button" to="." method="_on_stat_pressed" binds= [5]]
+[connection signal="pressed" from="MenuContainer/UpgradeContainer/GridContainer/DeliveryTime/Button" to="." method="_on_stat_pressed" binds= [6]]
+[connection signal="pressed" from="MenuContainer/UpgradeContainer/GridContainer/BigPromotion/Button" to="." method="_on_stat_pressed" binds= [7]]
