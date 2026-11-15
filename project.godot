@@ -17,8 +17,14 @@ config/icon="res://assets/placeholders/icon.svg"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom="uid://ccvnrvyo0oos"
 
 [input]
 
@@ -34,6 +40,7 @@ click={
 2d_physics/layer_2="PickUp"
 2d_physics/layer_3="DropOff"
 2d_physics/layer_4="Boxes"
+2d_physics/layer_5="Walls"
 
 [physics]
 

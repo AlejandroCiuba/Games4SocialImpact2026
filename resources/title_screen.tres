@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://ccvnrvyo0oos"]
+
+[ext_resource type="FontFile" uid="uid://chso6ad0ci7vb" path="res://resources/ChelseaMarket-Regular.ttf" id="1_pqv0r"]
+
+[resource]
+default_font = ExtResource("1_pqv0r")

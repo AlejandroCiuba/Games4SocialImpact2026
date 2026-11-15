@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dbic0mndxe61j"]
+
+[ext_resource type="Texture2D" uid="uid://d2j6e4u6n32j7" path="res://assets/startscreenHappyInc.png" id="1_jaeev"]
+[ext_resource type="Theme" uid="uid://ccvnrvyo0oos" path="res://resources/title_screen.tres" id="2_u80x2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_aihbh"]
+
+[node name="Start" type="Control" unique_id=1560550618]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="." unique_id=477059289]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Background2" type="TextureRect" parent="." unique_id=1681314388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("ImageTexture_aihbh")
+
+[node name="StartscreenHappyInc" type="Sprite2D" parent="." unique_id=2024162305]
+visible = false
+position = Vector2(643, 364.5)
+scale = Vector2(1.2994012, 1.312937)
+texture = ExtResource("1_jaeev")
+
+[node name="Title" type="Label" parent="." unique_id=1001444567]
+layout_mode = 1
+offset_left = 72.0
+offset_top = 90.0
+offset_right = 621.0
+offset_bottom = 220.0
+theme_override_font_sizes/font_size = 86
+text = "HAPPY INC."
+
+[node name="Menu" type="VBoxContainer" parent="." unique_id=913360322]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 63.0
+offset_top = -83.0
+offset_right = 519.0
+offset_bottom = 229.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="StartShift" type="Button" parent="Menu" unique_id=1743354488]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_u80x2")
+theme_override_font_sizes/font_size = 60
+text = "Start Shift"
+alignment = 0
+
+[node name="Options" type="Button" parent="Menu" unique_id=1799181666]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "Options"
+alignment = 0
+
+[node name="Credits" type="Button" parent="Menu" unique_id=1464518758]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "Credits"
+alignment = 0
