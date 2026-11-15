@@ -179,7 +179,7 @@ size_flags_vertical = 4
 
 [node name="Button" type="Button" parent="MenuContainer/UpgradeContainer/GridContainer/BigPromotion" unique_id=175795935]
 layout_mode = 2
-text = "Big Promotion (60)"
+text = "Big Promotion (100)"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/UpgradeContainer/GridContainer/BigPromotion" unique_id=1436719768]
 layout_mode = 2

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c2oeuxh8omgvu"]
+
+[ext_resource type="Texture2D" uid="uid://gj6jnwkv2frm" path="res://assets/Sprites/Background.png" id="1_kq7ac"]
+[ext_resource type="Script" uid="uid://dqptlwiackc5h" path="res://scenes/end_screen.gd" id="1_vj8vg"]
+[ext_resource type="Texture2D" uid="uid://bu763cmpwldu3" path="res://assets/Sprites/LandingPlatform.png" id="2_6e1uj"]
+[ext_resource type="Texture2D" uid="uid://cdbg1aw4503uc" path="res://assets/Sprites/BoxNr5.png" id="3_jc7ji"]
+[ext_resource type="Texture2D" uid="uid://c8hk1e25nv66g" path="res://assets/Sprites/FinalBoxA.png" id="4_87vmq"]
+[ext_resource type="Texture2D" uid="uid://dur68xj3tggdb" path="res://assets/Sprites/FinalBoxB.png" id="5_g44xs"]
+[ext_resource type="AudioStream" uid="uid://boiadgnkjyayw" path="res://assets/music/dolly_ending_final.wav" id="7_plosh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w1hs"]
+size = Vector2(145, 137)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uo4iu"]
+size = Vector2(1370, 868)
+
+[node name="EndScreen" type="Node2D" unique_id=702876183]
+script = ExtResource("1_vj8vg")
+
+[node name="Environment" type="Node2D" parent="." unique_id=376210443]
+
+[node name="Background" type="Sprite2D" parent="Environment" unique_id=1702134646]
+position = Vector2(640, 360)
+texture = ExtResource("1_kq7ac")
+
+[node name="Table" type="Sprite2D" parent="Environment" unique_id=1664508472]
+position = Vector2(628, 497)
+texture = ExtResource("2_6e1uj")
+
+[node name="Box" type="Sprite2D" parent="." unique_id=1198995134]
+position = Vector2(633, 481)
+texture = ExtResource("3_jc7ji")
+
+[node name="Area2D" type="Area2D" parent="Box" unique_id=1885763039]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box/Area2D" unique_id=1388873994]
+position = Vector2(-4.5, 6.5)
+shape = SubResource("RectangleShape2D_2w1hs")
+
+[node name="ZoomIn" type="Node2D" parent="." unique_id=944776223]
+
+[node name="ClosedBox" type="Sprite2D" parent="ZoomIn" unique_id=358825175]
+position = Vector2(640, 360)
+texture = ExtResource("4_87vmq")
+
+[node name="ClosedBoxArea" type="Area2D" parent="ZoomIn/ClosedBox" unique_id=125276467]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoomIn/ClosedBox/ClosedBoxArea" unique_id=151779612]
+shape = SubResource("RectangleShape2D_uo4iu")
+
+[node name="OpenedBox" type="Sprite2D" parent="ZoomIn" unique_id=879433506]
+visible = false
+position = Vector2(640, 360)
+texture = ExtResource("5_g44xs")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1622502108]
+stream = ExtResource("7_plosh")
+bus = &"Music"
+
+[connection signal="input_event" from="Box/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="ZoomIn/ClosedBox/ClosedBoxArea" to="." method="_on_closed_box_area_input_event"]

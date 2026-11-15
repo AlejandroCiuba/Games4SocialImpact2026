@@ -203,6 +203,7 @@ func _on_stat_updated(stat: UpgradeMenu.Stat) -> void:
 			if cost > menu.money:
 				return
 			print_debug("YOU WIN")
+			GameLoader.load_scene("res://scenes/end_screen.tscn")
 	
 	menu.update_money(-cost)
 			
