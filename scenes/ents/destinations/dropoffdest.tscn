@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dicljwjsdaktg" path="res://scenes/ents/destinations/dropoffdest.gd" id="1_joern"]
 [ext_resource type="Texture2D" uid="uid://bgvwb3e0fha33" path="res://assets/Sprites/TruckOpen.png" id="2_ux5ki"]
 [ext_resource type="Texture2D" uid="uid://cxva8ulgv2tgl" path="res://assets/Sprites/EmptyGate.png" id="2_wiqai"]
+[ext_resource type="AudioStream" uid="uid://dovlt3yjwecqd" path="res://assets/sfx/truck_leaving.wav" id="4_dpvq3"]
+[ext_resource type="AudioStream" uid="uid://ctspvkwxx1fqi" path="res://assets/sfx/truck_arrival.wav" id="5_xle36"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uk3g"]
 size = Vector2(124, 17)
@@ -40,3 +42,11 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=242158419]
 position = Vector2(-3, 2.5)
 shape = SubResource("RectangleShape2D_6qf70")
+
+[node name="TruckSoundLeaving" type="AudioStreamPlayer" parent="." unique_id=814398450]
+stream = ExtResource("4_dpvq3")
+bus = &"Sound Effects"
+
+[node name="TruckSoundArriving" type="AudioStreamPlayer" parent="." unique_id=1542373834]
+stream = ExtResource("5_xle36")
+bus = &"Sound Effects"

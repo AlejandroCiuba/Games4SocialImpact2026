@@ -43,6 +43,7 @@ func _on_boxes_dropped(amount: int) -> void:
 	for box in _get_boxes(Box.Status.DOLLY, amount):
 
 		$Destinations/DropOff/DropOffAnimations/AnimationPlayer2.play("smoke")
+		$Destinations/DropOff/AudioStreamPlayer.play()
 
 		box.curr_status = Box.Status.DROPOFF
 		dropoff.box_count += 1
@@ -72,6 +73,7 @@ func _on_boxes_requested(amount: int) -> void:
 	for box in _get_boxes(Box.Status.PICKUP, amount):
 		
 		$Destinations/PickUp/AnimationPlayer.play("smoke")
+		$Destinations/PickUp/AudioStreamPlayer.play()
 		
 		box.curr_status = Box.Status.DOLLY
 		pickup.box_count -= 1
@@ -89,7 +91,8 @@ func _on_boxes_requested(amount: int) -> void:
 func _on_box_spawned(box: Box) -> void:
 	box.curr_status = Box.Status.PICKUP
 	pickup.box_count += 1
-	
+
+
 	if pickup.box_count == pickup.max_boxes:
 		box_spawner.stop_spawning()
 

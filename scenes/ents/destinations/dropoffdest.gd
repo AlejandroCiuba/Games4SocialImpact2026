@@ -18,6 +18,7 @@ var out_for_delivery: bool = false
 
 func return_for_delivery() -> void:
 	
+	$TruckSoundArriving.play()
 	anim_controller.anim.play("gate_opened")
 	await anim_controller.anim.animation_finished
 	anim_controller.anim.play("truck_opened")
@@ -41,6 +42,7 @@ func deliver_boxes(boxes: Array[Node]) -> void:
 	anim_controller.anim.play("truck_closed")
 	await anim_controller.anim.animation_finished
 	anim_controller.anim.play("gate_closed")
+	$TruckSoundLeaving.play()
 	await anim_controller.anim.animation_finished
 
 	print_debug("Payment Given: ", total_payment)

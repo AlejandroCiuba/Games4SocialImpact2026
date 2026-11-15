@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bgvwb3e0fha33" path="res://assets/Sprites/TruckOpen.png" id="4_xjpn0"]
 [ext_resource type="Texture2D" uid="uid://cxva8ulgv2tgl" path="res://assets/Sprites/EmptyGate.png" id="5_uif7f"]
 [ext_resource type="Texture2D" uid="uid://bpobulsfy1544" path="res://assets/Sprites/TruckClosed.png" id="7_0vc35"]
+[ext_resource type="AudioStream" uid="uid://dkdjx46jyoliw" path="res://assets/sfx/put_down.wav" id="9_hyoog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
 size = Vector2(76, 134)
@@ -332,5 +333,8 @@ libraries/ = SubResource("AnimationLibrary_jtgws")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="DropOffAnimations" unique_id=1835806451]
 libraries/ = SubResource("AnimationLibrary_1qiap")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2107562811]
+stream = ExtResource("9_hyoog")
 
 [editable path="DropOffDest"]

@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://gj6jnwkv2frm" path="res://assets/Sprites/Background.png" id="2_klww0"]
 [ext_resource type="PackedScene" uid="uid://dvq1bpvvlv5p4" path="res://scenes/environment/clock.tscn" id="3_tkfpm"]
 [ext_resource type="PackedScene" uid="uid://drllud4wviu17" path="res://scenes/ents/pick_up.tscn" id="4_2t44s"]
+[ext_resource type="PackedScene" uid="uid://b5pj4spngniaq" path="res://scenes/environment/music.tscn" id="4_jk08y"]
 [ext_resource type="PackedScene" uid="uid://x6hmbqvcwrm0" path="res://scenes/ents/drop_off.tscn" id="5_klww0"]
+[ext_resource type="AudioStream" uid="uid://b1olvyve8amow" path="res://assets/music/dolly_gameplay_final.wav" id="5_pwlhs"]
 [ext_resource type="PackedScene" uid="uid://0xtqhyge5hnm" path="res://scenes/environment/box_spawner.tscn" id="6_klww0"]
 
 [node name="GameStage" type="Node2D" unique_id=1401212467 node_paths=PackedStringArray("dolly", "pickup", "dropoff", "box_spawner", "box_dolly_point", "box_dolly_drop_point")]
@@ -25,6 +27,9 @@ texture = ExtResource("2_klww0")
 
 [node name="Clock" parent="Environment" unique_id=1543065392 instance=ExtResource("3_tkfpm")]
 position = Vector2(647, 65)
+
+[node name="Music" parent="Environment" unique_id=428273516 instance=ExtResource("4_jk08y")]
+song = ExtResource("5_pwlhs")
 
 [node name="Destinations" type="Node2D" parent="." unique_id=307791878]
 
