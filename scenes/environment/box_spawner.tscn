@@ -51,6 +51,7 @@ unique_name_in_owner = true
 autostart = true
 
 [node name="BoxSpawnPoint" type="Node2D" parent="." unique_id=243687692]
+position = Vector2(0, 25)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=111124102]
 rotation = 0.16580628

@@ -26,24 +26,6 @@ texture = ExtResource("2_klww0")
 [node name="Clock" parent="Environment" unique_id=1543065392 instance=ExtResource("3_tkfpm")]
 position = Vector2(647, 65)
 
-[node name="Dolly" parent="." unique_id=2029414344 instance=ExtResource("1_l41bj")]
-unique_name_in_owner = true
-position = Vector2(600, 500)
-scale = Vector2(1.7199976, 1.7199976)
-motion_mode = 1
-
-[node name="DollyMovement" parent="Dolly" index="2" unique_id=1797003254 node_paths=PackedStringArray("destinations")]
-speed = 300.0
-destinations = [NodePath("../../Destinations/PickUp/PickUpDest"), NodePath("../../Destinations/DropOff/DropOffDest")]
-
-[node name="DollyPickUp" parent="Dolly" index="3" unique_id=1235472174 node_paths=PackedStringArray("pick_up_area")]
-request_box_delay = 0.25
-pick_up_area = NodePath("../../Destinations/PickUp/DollyPickUpArea")
-
-[node name="DollyDropOff" parent="Dolly" index="4" unique_id=989754542 node_paths=PackedStringArray("drop_off_area")]
-box_drop_time = 0.75
-drop_off_area = NodePath("../../Destinations/DropOff/DollyDropOffArea")
-
 [node name="Destinations" type="Node2D" parent="." unique_id=307791878]
 
 [node name="PickUp" parent="Destinations" unique_id=193954979 instance=ExtResource("4_2t44s")]
@@ -60,7 +42,26 @@ position = Vector2(1103, 467)
 
 [node name="DropOffDest" parent="Destinations/DropOff" index="0" unique_id=320559756]
 max_boxes = 5
-delivery_time = 0.75
+delivery_time = 2.0
+
+[node name="Dolly" parent="." unique_id=2029414344 instance=ExtResource("1_l41bj")]
+unique_name_in_owner = true
+position = Vector2(600, 500)
+scale = Vector2(1.7199976, 1.7199976)
+motion_mode = 1
+
+[node name="DollyMovement" parent="Dolly" index="2" unique_id=1797003254 node_paths=PackedStringArray("destinations")]
+speed = 300.0
+destinations = [NodePath("../../Destinations/PickUp/PickUpDest"), NodePath("../../Destinations/DropOff/DropOffDest")]
+
+[node name="DollyPickUp" parent="Dolly" index="3" unique_id=1235472174 node_paths=PackedStringArray("pick_up_area")]
+request_box_delay = 1.0
+request_box_amount = 2
+pick_up_area = NodePath("../../Destinations/PickUp/DollyPickUpArea")
+
+[node name="DollyDropOff" parent="Dolly" index="4" unique_id=989754542 node_paths=PackedStringArray("drop_off_area")]
+box_drop_time = 0.75
+drop_off_area = NodePath("../../Destinations/DropOff/DollyDropOffArea")
 
 [node name="Boxes" type="Node2D" parent="." unique_id=330025506]
 unique_name_in_owner = true
@@ -74,6 +75,7 @@ scale = Vector2(2.3541667, 2.3618274)
 boxes = NodePath("../Boxes")
 box_spawn_time = 0.75
 
-[editable path="Dolly"]
 [editable path="Destinations/PickUp"]
 [editable path="Destinations/DropOff"]
+[editable path="Destinations/DropOff/DropOffDest"]
+[editable path="Dolly"]

@@ -14,11 +14,12 @@ size = Vector2(212, 233)
 script = ExtResource("1_joern")
 metadata/_custom_type_script = "uid://d285mlq1x0t2w"
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1152491190]
+[node name="GateSprite" type="Sprite2D" parent="." unique_id=1152491190]
 position = Vector2(5, 12)
 texture = ExtResource("2_wiqai")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1188049629]
+[node name="TruckSprite" type="Sprite2D" parent="." unique_id=1188049629]
+position = Vector2(-1, 1)
 texture = ExtResource("2_ux5ki")
 
 [node name="BoxPlatform" type="StaticBody2D" parent="." unique_id=610567589]

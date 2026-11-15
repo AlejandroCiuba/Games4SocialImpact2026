@@ -2,12 +2,139 @@
 
 [ext_resource type="PackedScene" uid="uid://ktbek631qo4n" path="res://scenes/ents/destinations/dropoffdest.tscn" id="1_5sj5x"]
 [ext_resource type="Texture2D" uid="uid://c3ml21cf42u6w" path="res://assets/Sprites/light_texture.png" id="2_0y6r7"]
+[ext_resource type="Texture2D" uid="uid://bsgovaohujhs1" path="res://assets/Sprites/ClosedGate.png" id="2_1mkln"]
+[ext_resource type="Script" uid="uid://bdsuvgpdqykax" path="res://scenes/ents/drop_off_animations.gd" id="3_tgr43"]
+[ext_resource type="Texture2D" uid="uid://cxva8ulgv2tgl" path="res://assets/Sprites/EmptyGate.png" id="5_uif7f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
 size = Vector2(76, 134)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y6r7"]
 size = Vector2(20, 364)
+
+[sub_resource type="Animation" id="Animation_xjpn0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%DropOffDest/GateSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1mkln")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DropOffDest/TruckSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PointLight2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0vc35"]
+resource_name = "gate_closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%DropOffDest/GateSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1mkln")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DropOffDest/TruckSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PointLight2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hyoog"]
+resource_name = "gate_opened"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%DropOffDest/GateSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_uif7f")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DropOffDest/TruckSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PointLight2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jtgws"]
+_data = {
+&"RESET": SubResource("Animation_xjpn0"),
+&"gate_closed": SubResource("Animation_0vc35"),
+&"gate_opened": SubResource("Animation_hyoog")
+}
 
 [node name="DropOff" type="Node2D" unique_id=1140804059]
 
@@ -16,6 +143,12 @@ unique_name_in_owner = true
 max_boxes = 2
 delivery_time = 5.0
 stop_point = NodePath("DropOffStopPoint")
+
+[node name="GateSprite" parent="DropOffDest" index="0" unique_id=1152491190]
+texture = ExtResource("2_1mkln")
+
+[node name="TruckSprite" parent="DropOffDest" index="1" unique_id=1188049629]
+visible = false
 
 [node name="DropOffStopPoint" type="Node2D" parent="DropOffDest" unique_id=354674071]
 position = Vector2(-150, 0)
@@ -50,7 +183,18 @@ position = Vector2(77, -118)
 shape = SubResource("RectangleShape2D_0y6r7")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2118717744]
+visible = false
 position = Vector2(-508.99997, 35)
 scale = Vector2(2.2943397, 0.54638124)
 energy = 0.44
 texture = ExtResource("2_0y6r7")
+
+[node name="DropOffAnimations" type="Node2D" parent="." unique_id=991352022 node_paths=PackedStringArray("drop_off", "anim")]
+script = ExtResource("3_tgr43")
+drop_off = NodePath("../DropOffDest")
+anim = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DropOffAnimations" unique_id=1988087051]
+libraries/ = SubResource("AnimationLibrary_jtgws")
+
+[editable path="DropOffDest"]
