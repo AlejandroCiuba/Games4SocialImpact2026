@@ -69,14 +69,14 @@ position = Vector2(-12, 32.000004)
 scale = Vector2(0.8066667, 0.8066667)
 texture = ExtResource("3_y30vw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DollyAnimation" unique_id=1951984270]
-libraries/ = SubResource("AnimationLibrary_3fyqg")
-
 [node name="Person" parent="DollyAnimation" unique_id=407835734 instance=ExtResource("5_3fyqg")]
 position = Vector2(-49, 0)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DollyAnimation" unique_id=1951984270]
+libraries/ = SubResource("AnimationLibrary_3fyqg")
+
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1440133575]
-polygon = PackedVector2Array(-29, -36, -18, 37, 25, 39, 41, -38, 33, -39, 20, 29, -12, 28, -22, -38)
+polygon = PackedVector2Array(-39, -33, -18, 37, 25, 39, 61, -34, 48, -35, 20, 29, -12, 28, -34, -35)
 
 [node name="DollyMovement" type="Node2D" parent="." unique_id=1797003254 node_paths=PackedStringArray("dolly", "dolly_anim")]
 script = ExtResource("3_cof5m")

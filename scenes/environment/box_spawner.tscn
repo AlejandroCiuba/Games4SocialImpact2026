@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cv1xyxrj3ypti" path="res://scenes/environment/box_spawner.gd" id="1_0bwl0"]
 [ext_resource type="PackedScene" uid="uid://1882l0x3dk6q" path="res://scenes/ents/box.tscn" id="2_kuow0"]
 [ext_resource type="Texture2D" uid="uid://cynmugg1wwnku" path="res://assets/Sprites/ChuteC.png" id="3_stgoy"]
+[ext_resource type="Texture2D" uid="uid://dw5ufaej5bljq" path="res://assets/Sprites/smoke.png" id="4_7v3dt"]
 [ext_resource type="Script" uid="uid://tibxs5sjhkd5" path="res://scenes/environment/box_animations.gd" id="4_stgoy"]
 
 [sub_resource type="Animation" id="Animation_7v3dt"]
@@ -10,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/path = NodePath("../ChuteSprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -19,13 +20,37 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.16580628]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Smoke:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.60784316, 0.60784316, 0.60784316, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Smoke:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.19417481, 0.19417475)]
+}
 
 [sub_resource type="Animation" id="Animation_stgoy"]
 resource_name = "shake"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/path = NodePath("../ChuteSprite:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -35,10 +60,51 @@ tracks/0/keys = {
 "values": [0.16580628, -0.4956735, 0.16580628]
 }
 
+[sub_resource type="Animation" id="Animation_u848h"]
+resource_name = "smoke"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Smoke:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.60784316, 0.60784316, 0.60784316, 0), Color(0.60784316, 0.60784316, 0.60784316, 1), Color(0.60784316, 0.60784316, 0.60784316, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Smoke:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.11505815, 0.11505811), Vector2(0.19417481, 0.19417475)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7v3dt"]
 _data = {
 &"RESET": SubResource("Animation_7v3dt"),
-&"shake": SubResource("Animation_stgoy")
+&"shake": SubResource("Animation_stgoy"),
+&"smoke": SubResource("Animation_u848h")
 }
 
 [node name="BoxSpawner" type="Node2D" unique_id=2002777395 node_paths=PackedStringArray("box_spawn_point")]
@@ -51,15 +117,25 @@ unique_name_in_owner = true
 autostart = true
 
 [node name="BoxSpawnPoint" type="Node2D" parent="." unique_id=243687692]
-position = Vector2(0, 25)
+position = Vector2(-5, 26)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=111124102]
+[node name="ChuteSprite" type="Sprite2D" parent="." unique_id=111124102]
 rotation = 0.16580628
 texture = ExtResource("3_stgoy")
+
+[node name="Smoke" type="Sprite2D" parent="." unique_id=32001646]
+visible = false
+modulate = Color(0.60784316, 0.60784316, 0.60784316, 1)
+position = Vector2(-5, 33.000004)
+scale = Vector2(0.19417481, 0.19417475)
+texture = ExtResource("4_7v3dt")
 
 [node name="BoxAnimations" type="Node2D" parent="." unique_id=146817833 node_paths=PackedStringArray("box_spawner")]
 script = ExtResource("4_stgoy")
 box_spawner = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BoxAnimations" unique_id=1023069178]
+libraries/ = SubResource("AnimationLibrary_7v3dt")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="BoxAnimations" unique_id=988121123]
 libraries/ = SubResource("AnimationLibrary_7v3dt")

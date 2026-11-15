@@ -37,6 +37,10 @@ max_boxes = 5
 [node name="BoxDollyMovePoint" parent="Destinations/PickUp" index="2" unique_id=593497997]
 position = Vector2(130, -225)
 
+[node name="Smoke" parent="Destinations/PickUp" index="5" unique_id=177395713]
+visible = false
+position = Vector2(130, -225)
+
 [node name="DropOff" parent="Destinations" unique_id=1140804059 instance=ExtResource("5_klww0")]
 position = Vector2(1103, 467)
 
@@ -63,9 +67,6 @@ pick_up_area = NodePath("../../Destinations/PickUp/DollyPickUpArea")
 box_drop_time = 0.75
 drop_off_area = NodePath("../../Destinations/DropOff/DollyDropOffArea")
 
-[node name="Boxes" type="Node2D" parent="." unique_id=330025506]
-unique_name_in_owner = true
-
 [node name="DeliveryTimer" type="Timer" parent="." unique_id=571891587]
 unique_name_in_owner = true
 one_shot = true
@@ -75,6 +76,9 @@ position = Vector2(251.00002, 56)
 scale = Vector2(2.3541667, 2.3618274)
 boxes = NodePath("../Boxes")
 box_spawn_time = 0.75
+
+[node name="Boxes" type="Node2D" parent="." unique_id=330025506]
+unique_name_in_owner = true
 
 [editable path="Destinations/PickUp"]
 [editable path="Destinations/DropOff"]

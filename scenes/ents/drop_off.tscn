@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://x6hmbqvcwrm0"]
 
 [ext_resource type="PackedScene" uid="uid://ktbek631qo4n" path="res://scenes/ents/destinations/dropoffdest.tscn" id="1_5sj5x"]
+[ext_resource type="Texture2D" uid="uid://dw5ufaej5bljq" path="res://assets/Sprites/smoke.png" id="2_0vc35"]
 [ext_resource type="Texture2D" uid="uid://c3ml21cf42u6w" path="res://assets/Sprites/light_texture.png" id="2_0y6r7"]
 [ext_resource type="Texture2D" uid="uid://bsgovaohujhs1" path="res://assets/Sprites/ClosedGate.png" id="2_1mkln"]
 [ext_resource type="Script" uid="uid://bdsuvgpdqykax" path="res://scenes/ents/drop_off_animations.gd" id="3_tgr43"]
@@ -182,6 +183,91 @@ _data = {
 &"truck_opened": SubResource("Animation_xjpn0")
 }
 
+[sub_resource type="Animation" id="Animation_1qiap"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%DropOffDest/SmokeSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DropOffDest/SmokeSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.4117647, 0.4117647, 0.4117647, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DropOffDest/SmokeSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25459585, 0.25459585)]
+}
+
+[sub_resource type="Animation" id="Animation_3l1pr"]
+resource_name = "smoke"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%DropOffDest/SmokeSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DropOffDest/SmokeSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.4117647, 0.4117647, 0.4117647, 0), Color(0.4117647, 0.4117647, 0.4117647, 1), Color(0.4117647, 0.4117647, 0.4117647, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DropOffDest/SmokeSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.161618, 0.161618), Vector2(0.25459585, 0.25459585)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qiap"]
+_data = {
+&"RESET": SubResource("Animation_1qiap"),
+&"smoke": SubResource("Animation_3l1pr")
+}
+
 [node name="DropOff" type="Node2D" unique_id=1140804059]
 
 [node name="DropOffDest" parent="." unique_id=320559756 node_paths=PackedStringArray("anim_controller", "stop_point") instance=ExtResource("1_5sj5x")]
@@ -191,12 +277,19 @@ max_boxes = 2
 delivery_time = 5.0
 stop_point = NodePath("DropOffStopPoint")
 
+[node name="SmokeSprite" type="Sprite2D" parent="DropOffDest" unique_id=1284810037]
+visible = false
+modulate = Color(0.4117647, 0.4117647, 0.4117647, 1)
+position = Vector2(-2.2888184e-05, -73.999985)
+scale = Vector2(0.25459585, 0.25459585)
+texture = ExtResource("2_0vc35")
+
 [node name="DropOffStopPoint" type="Node2D" parent="DropOffDest" unique_id=354674071]
 position = Vector2(-150, 0)
 
 [node name="BoxDollyDropPoint" type="Node2D" parent="." unique_id=911556163]
 unique_name_in_owner = true
-position = Vector2(0, -233)
+position = Vector2(0, -74)
 
 [node name="DollyDropOffArea" type="Area2D" parent="." unique_id=843537579]
 position = Vector2(-150, 0)
@@ -236,5 +329,8 @@ anim = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DropOffAnimations" unique_id=1988087051]
 libraries/ = SubResource("AnimationLibrary_jtgws")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="DropOffAnimations" unique_id=1835806451]
+libraries/ = SubResource("AnimationLibrary_1qiap")
 
 [editable path="DropOffDest"]

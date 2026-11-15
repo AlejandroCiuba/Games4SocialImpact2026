@@ -42,6 +42,8 @@ func _on_boxes_dropped(amount: int) -> void:
 	
 	for box in _get_boxes(Box.Status.DOLLY, amount):
 
+		$Destinations/DropOff/DropOffAnimations/AnimationPlayer2.play("smoke")
+
 		box.curr_status = Box.Status.DROPOFF
 		dropoff.box_count += 1
 
@@ -68,6 +70,8 @@ func _on_boxes_requested(amount: int) -> void:
 		return
 
 	for box in _get_boxes(Box.Status.PICKUP, amount):
+		
+		$Destinations/PickUp/AnimationPlayer.play("smoke")
 		
 		box.curr_status = Box.Status.DOLLY
 		pickup.box_count -= 1
