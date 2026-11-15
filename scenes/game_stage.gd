@@ -12,15 +12,16 @@ extends Node2D
 @export var box_dolly_point: Node2D
 @export var box_dolly_drop_point: Node2D
 
+# [Start, Cost, Max]
 @export var stats: Dictionary = {
-	UpgradeMenu.Stat.SPEED: [100.0, 2],
-	UpgradeMenu.Stat.TABLECAP: [5, 1],
-	UpgradeMenu.Stat.BPPU: [1, 5],
-	UpgradeMenu.Stat.DC: [5, 10],
-	UpgradeMenu.Stat.BPDO: [1, 4],
-	UpgradeMenu.Stat.BST: [6.0, 15],
-	UpgradeMenu.Stat.DT: [5.0, 15],
-	UpgradeMenu.Stat.BP: ["GET PAID", 100]
+	UpgradeMenu.Stat.SPEED: [100.0, 2, 400.0],
+	UpgradeMenu.Stat.TABLECAP: [5, 1, 40],
+	UpgradeMenu.Stat.BPPU: [1, 5, 10],
+	UpgradeMenu.Stat.DC: [5, 10, 30],
+	UpgradeMenu.Stat.BPDO: [1, 4, 5],
+	UpgradeMenu.Stat.BST: [6.0, 15, 1.0],
+	UpgradeMenu.Stat.DT: [5.0, 15, 1.0],
+	UpgradeMenu.Stat.BP: ["GET PAID", 100, 101]
 }
 
 @onready var delivery_timer: Timer = %DeliveryTimer
@@ -150,43 +151,43 @@ func _on_stat_updated(stat: UpgradeMenu.Stat) -> void:
 
 	match stat:
 		UpgradeMenu.Stat.SPEED:
-			if is_equal_approx(dolly.dolly_movement.speed, 400.0):
+			if is_equal_approx(dolly.dolly_movement.speed, stats[stat][2]):
 				return
 			dolly.dolly_movement.speed += 50.0
 			menu.set_stat(UpgradeMenu.Stat.SPEED, dolly.dolly_movement.speed)
 			print_debug("SPEED UPGRADED")
 		UpgradeMenu.Stat.TABLECAP:
-			if pickup.max_boxes == 40:
+			if pickup.max_boxes == stats[stat][2]:
 				return
 			pickup.max_boxes += 1
 			menu.set_stat(UpgradeMenu.Stat.TABLECAP, pickup.max_boxes)
 			print_debug("TABLECAP UPGRADED")
 		UpgradeMenu.Stat.BPPU:
-			if dolly.dolly_pick_up.request_box_amount == 10:
+			if dolly.dolly_pick_up.request_box_amount == stats[stat][2]:
 				return
 			dolly.dolly_pick_up.request_box_amount += 1
 			menu.set_stat(UpgradeMenu.Stat.BPPU, dolly.dolly_pick_up.request_box_amount)
 			print_debug("BPPU UPGRADED")
 		UpgradeMenu.Stat.DC:
-			if dropoff.max_boxes == 30:
+			if dropoff.max_boxes == stats[stat][2]:
 				return
 			dropoff.max_boxes += 1
 			menu.set_stat(UpgradeMenu.Stat.DC, dropoff.max_boxes)
 			print_debug("DC UPGRADED")
 		UpgradeMenu.Stat.BPDO:
-			if dolly.dolly_drop_off.box_drop_amount == 5:
+			if dolly.dolly_drop_off.box_drop_amount == stats[stat][2]:
 				return
 			dolly.dolly_drop_off.box_drop_amount += 1
 			menu.set_stat(UpgradeMenu.Stat.BPDO, dolly.dolly_drop_off.box_drop_amount)
 			print_debug("BPDO UPGRADED")
 		UpgradeMenu.Stat.BST:
-			if is_equal_approx(box_spawner.box_spawn_time, 1.0):
+			if is_equal_approx(box_spawner.box_spawn_time, stats[stat][2]):
 				return
 			box_spawner.box_spawn_time -= 0.5
 			menu.set_stat(UpgradeMenu.Stat.BST, box_spawner.box_spawn_time)
 			print_debug("BST UPGRADED")
 		UpgradeMenu.Stat.DT:
-			if is_equal_approx(delivery_timer.wait_time, 1.0):
+			if is_equal_approx(delivery_timer.wait_time, stats[stat][2]):
 				return
 			delivery_timer.wait_time -= 0.5
 			menu.set_stat(UpgradeMenu.Stat.DT, delivery_timer.wait_time)
@@ -214,6 +215,7 @@ func _ready() -> void:
 
 	menu.override_money(0)
 	starting_stats()
+	menu.play_sounds = true
 
 	$Control/Transition.show()
 	$Control/Transition/AnimationPlayer.play_backwards("fadein")
