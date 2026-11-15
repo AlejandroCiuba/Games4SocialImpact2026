@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dbic0mndxe61j" path="res://scenes/start.tscn" id="1_he1sj"]
 [ext_resource type="PackedScene" uid="uid://d1gdim75bpo3o" path="res://scenes/credits.tscn" id="2_r2jwc"]
 [ext_resource type="PackedScene" uid="uid://bokcrqn5splat" path="res://scenes/options.tscn" id="3_hm208"]
+[ext_resource type="AudioStream" uid="uid://00h0wvodbrdt" path="res://assets/music/dolly_title_final.wav" id="4_r2jwc"]
 
 [node name="StartScreen" type="CanvasLayer" unique_id=824465646]
 
@@ -17,3 +18,7 @@ title = NodePath("../Start")
 [node name="Options" parent="." unique_id=352017170 node_paths=PackedStringArray("title") instance=ExtResource("3_hm208")]
 visible = false
 title = NodePath("../Start")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1601637892]
+stream = ExtResource("4_r2jwc")
+bus = &"Music"

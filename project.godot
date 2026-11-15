@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Games4SocialImpact"
-run/main_scene="uid://diyegqvkm7n5s"
+run/main_scene="uid://dfeprddrsnfvo"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://assets/placeholders/icon.svg"
 

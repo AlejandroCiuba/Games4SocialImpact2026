@@ -34,9 +34,10 @@ position = Vector2(647, 65)
 song = ExtResource("5_pwlhs")
 
 [node name="Destinations" type="Node2D" parent="." unique_id=307791878]
+position = Vector2(0, -34)
 
 [node name="PickUp" parent="Destinations" unique_id=193954979 instance=ExtResource("4_2t44s")]
-position = Vector2(267, 520)
+position = Vector2(296, 510)
 
 [node name="PickUpDest" parent="Destinations/PickUp" index="0" unique_id=772234123]
 max_boxes = 5
@@ -49,7 +50,7 @@ visible = false
 position = Vector2(130, -225)
 
 [node name="DropOff" parent="Destinations" unique_id=1140804059 instance=ExtResource("5_klww0")]
-position = Vector2(1103, 467)
+position = Vector2(1020, 421)
 
 [node name="DropOffDest" parent="Destinations/DropOff" index="0" unique_id=320559756]
 max_boxes = 5
@@ -57,7 +58,7 @@ delivery_time = 2.0
 
 [node name="Dolly" parent="." unique_id=2029414344 instance=ExtResource("1_l41bj")]
 unique_name_in_owner = true
-position = Vector2(600, 500)
+position = Vector2(621, 436)
 scale = Vector2(1.7199976, 1.7199976)
 motion_mode = 1
 
@@ -79,7 +80,7 @@ unique_name_in_owner = true
 one_shot = true
 
 [node name="BoxSpawner" parent="." unique_id=2002777395 node_paths=PackedStringArray("boxes") instance=ExtResource("6_klww0")]
-position = Vector2(251.00002, 56)
+position = Vector2(282, 56)
 scale = Vector2(2.3541667, 2.3618274)
 boxes = NodePath("../Boxes")
 box_spawn_time = 0.75

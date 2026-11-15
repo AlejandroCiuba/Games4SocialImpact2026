@@ -5,11 +5,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Music.play()
 	show()
 
 
 func _on_start_shift_pressed() -> void:
-	pass # Replace with function body.
+	GameLoader.load_scene("res://scenes/game_stage.tscn")
 
 
 func _on_options_pressed() -> void:

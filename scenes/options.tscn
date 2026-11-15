@@ -105,3 +105,4 @@ text = "Mute"
 alignment = 0
 
 [connection signal="pressed" from="HBoxContainer/TitleScreen" to="." method="_on_title_screen_pressed"]
+[connection signal="pressed" from="HBoxContainer/Mute" to="." method="_on_mute_pressed"]

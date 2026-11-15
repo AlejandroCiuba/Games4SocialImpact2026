@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dbic0mndxe61j"]
 
 [ext_resource type="Texture2D" uid="uid://gj6jnwkv2frm" path="res://assets/Sprites/Background.png" id="1_bodal"]
-[ext_resource type="Texture2D" uid="uid://d2j6e4u6n32j7" path="res://assets/startscreenHappyInc.png" id="1_jaeev"]
 [ext_resource type="Script" uid="uid://620qk6d8wrop" path="res://scenes/start.gd" id="1_kdmts"]
 [ext_resource type="Theme" uid="uid://ccvnrvyo0oos" path="res://resources/title_screen.tres" id="2_u80x2"]
+[ext_resource type="PackedScene" uid="uid://dvq1bpvvlv5p4" path="res://scenes/environment/clock.tscn" id="4_kdmts"]
+[ext_resource type="AudioStream" uid="uid://00h0wvodbrdt" path="res://assets/music/dolly_title_final.wav" id="5_0auqf"]
 
 [node name="Start" type="Control" unique_id=1560550618]
 layout_mode = 3
@@ -25,12 +26,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("1_bodal")
 
-[node name="StartscreenHappyInc" type="Sprite2D" parent="." unique_id=2024162305]
-visible = false
-position = Vector2(643, 364.5)
-scale = Vector2(1.2994012, 1.312937)
-texture = ExtResource("1_jaeev")
-
 [node name="Title" type="Label" parent="." unique_id=1001444567]
 layout_mode = 1
 offset_left = 72.0
@@ -39,7 +34,7 @@ offset_right = 621.0
 offset_bottom = 220.0
 theme_override_colors/font_color = Color(0.81960785, 0.8117647, 0.4117647, 1)
 theme_override_font_sizes/font_size = 86
-text = "HAPPY INC."
+text = "SALVADOR"
 
 [node name="Menu" type="VBoxContainer" parent="." unique_id=913360322]
 layout_mode = 1
@@ -53,11 +48,13 @@ offset_bottom = 229.0
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 20
 
 [node name="StartShift" type="Button" parent="Menu" unique_id=1743354488]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_u80x2")
+theme_override_font_sizes/font_size = 72
 text = "Start Shift"
 alignment = 0
 
@@ -65,6 +62,7 @@ alignment = 0
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_u80x2")
+theme_override_font_sizes/font_size = 72
 text = "Options"
 alignment = 0
 
@@ -72,8 +70,17 @@ alignment = 0
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_u80x2")
+theme_override_font_sizes/font_size = 72
 text = "Credits"
 alignment = 0
+
+[node name="Clock" parent="." unique_id=1543065392 instance=ExtResource("4_kdmts")]
+position = Vector2(917, 253.00003)
+scale = Vector2(5.342391, 5.342391)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=936664612]
+stream = ExtResource("5_0auqf")
+bus = &"Music"
 
 [connection signal="pressed" from="Menu/StartShift" to="." method="_on_start_shift_pressed"]
 [connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
