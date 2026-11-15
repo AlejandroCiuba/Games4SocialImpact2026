@@ -188,7 +188,7 @@ func _on_stat_updated(stat: UpgradeMenu.Stat) -> void:
 			print_debug("DT UPGRADED")
 		UpgradeMenu.Stat.BP:
 			print_debug("YOU WIN")
-			GameLoader.load_scene("res://scenes/end_screen.tscn")
+			GameLoader.load_scene("res://scenes/menus/end_screen.tscn")
 			return
 
 	if stats[stat][0] is int:
