@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cx7ym4w3ulqo" path="res://assets/Sprites/Unnamed (1).png" id="1_8ma10"]
 [ext_resource type="FontFile" uid="uid://chso6ad0ci7vb" path="res://resources/ChelseaMarket-Regular.ttf" id="1_pqv0r"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v7sf"]
+bg_color = Color(0.24477634, 0.24477643, 0.24477628, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or7s2"]
 bg_color = Color(0.7176471, 0.7176471, 0.7176471, 1)
 border_width_left = 4
@@ -42,6 +45,7 @@ Button/colors/font_color = Color(0.2627451, 0.2627451, 0.2627451, 1)
 Button/colors/font_hover_color = Color(0.2627451, 0.2627451, 0.2627451, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_8v7sf")
 Button/styles/hover = SubResource("StyleBoxFlat_or7s2")
 Button/styles/normal = SubResource("StyleBoxFlat_pqv0r")
 Button/styles/pressed = SubResource("StyleBoxFlat_gvaiv")
