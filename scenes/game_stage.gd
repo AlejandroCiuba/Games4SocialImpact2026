@@ -21,7 +21,7 @@ extends Node2D
 	UpgradeMenu.Stat.BPDO: [1, 4, 5],
 	UpgradeMenu.Stat.BST: [6.0, 15, 1.0],
 	UpgradeMenu.Stat.DT: [5.0, 15, 1.0],
-	UpgradeMenu.Stat.BP: ["GET PAID", 100, 101]
+	UpgradeMenu.Stat.BP: ["GET PAID", 5, 101]
 }
 
 @onready var delivery_timer: Timer = %DeliveryTimer
@@ -188,8 +188,7 @@ func _on_stat_updated(stat: UpgradeMenu.Stat) -> void:
 			print_debug("DT UPGRADED")
 		UpgradeMenu.Stat.BP:
 			print_debug("YOU WIN")
-			GameLoader.load_scene("res://scenes/menus/end_screen.tscn")
-			return
+			GameLoader.load_scene("res://scenes/end_screen.tscn")
 
 	if stats[stat][0] is int:
 		if stats[stat][0] == stats[stat][2]:
