@@ -225,3 +225,6 @@ func _ready() -> void:
 
 	menu.override_money(0)
 	starting_stats()
+
+	$Control/Transition.show()
+	$Control/Transition/AnimationPlayer.play_backwards("fadein")

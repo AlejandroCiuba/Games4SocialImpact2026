@@ -3,12 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://dbic0mndxe61j" path="res://scenes/menus/start.tscn" id="1_he1sj"]
 [ext_resource type="PackedScene" uid="uid://d1gdim75bpo3o" path="res://scenes/menus/credits.tscn" id="2_r2jwc"]
 [ext_resource type="PackedScene" uid="uid://bokcrqn5splat" path="res://scenes/menus/options.tscn" id="3_hm208"]
+[ext_resource type="PackedScene" uid="uid://cek1wwcr0f6hk" path="res://scenes/environment/transition.tscn" id="4_m2pa2"]
 
 [node name="StartScreen" type="CanvasLayer" unique_id=824465646]
 
-[node name="Start" parent="." unique_id=1560550618 node_paths=PackedStringArray("credits", "options") instance=ExtResource("1_he1sj")]
+[node name="Transition" parent="." unique_id=1688835768 instance=ExtResource("4_m2pa2")]
+visible = false
+z_index = 1
+
+[node name="Start" parent="." unique_id=1560550618 node_paths=PackedStringArray("credits", "options", "transition", "transition_anim") instance=ExtResource("1_he1sj")]
 credits = NodePath("../Credits")
 options = NodePath("../Options")
+transition = NodePath("../Transition")
+transition_anim = NodePath("../Transition/AnimationPlayer")
 
 [node name="Credits" parent="." unique_id=732573263 node_paths=PackedStringArray("title") instance=ExtResource("2_r2jwc")]
 visible = false
@@ -17,3 +24,5 @@ title = NodePath("../Start")
 [node name="Options" parent="." unique_id=352017170 node_paths=PackedStringArray("title") instance=ExtResource("3_hm208")]
 visible = false
 title = NodePath("../Start")
+
+[editable path="Transition"]
