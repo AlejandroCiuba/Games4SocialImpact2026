@@ -85,6 +85,7 @@ func set_button_max(stat: Stat) -> void:
 	if button == null:
 		return
 
+	button.disabled = true
 	write_button(button, button.text + " MAX!")
 
 

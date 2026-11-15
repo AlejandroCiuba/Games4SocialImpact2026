@@ -12,7 +12,7 @@ extends Node2D
 @export var box_dolly_point: Node2D
 @export var box_dolly_drop_point: Node2D
 
-# [Start, Cost, Max]
+# [Curr, Cost, Max]
 @export var stats: Dictionary = {
 	UpgradeMenu.Stat.SPEED: [100.0, 2, 400.0],
 	UpgradeMenu.Stat.TABLECAP: [5, 1, 40],
@@ -146,56 +146,58 @@ func _on_give_payment(value: int) -> void:
 func _on_stat_updated(stat: UpgradeMenu.Stat) -> void:
 
 	var cost: int = stats[stat][1]
+
 	if cost > menu.money:
 		return
 
+	if stats[stat][0] is int:
+		if stats[stat][0] == stats[stat][2]:
+			return
+	elif stats[stat][0] is float:
+		if is_equal_approx(stats[stat][0], stats[stat][2]):
+			return
+
 	match stat:
 		UpgradeMenu.Stat.SPEED:
-			if is_equal_approx(dolly.dolly_movement.speed, stats[stat][2]):
-				return
-			dolly.dolly_movement.speed += 50.0
-			menu.set_stat(UpgradeMenu.Stat.SPEED, dolly.dolly_movement.speed)
+			stats[stat][0] += 50.0
+			dolly.dolly_movement.speed = stats[stat][0]
 			print_debug("SPEED UPGRADED")
 		UpgradeMenu.Stat.TABLECAP:
-			if pickup.max_boxes == stats[stat][2]:
-				return
-			pickup.max_boxes += 1
-			menu.set_stat(UpgradeMenu.Stat.TABLECAP, pickup.max_boxes)
+			stats[stat][0] += 1
+			pickup.max_boxes = stats[stat][0]
 			print_debug("TABLECAP UPGRADED")
 		UpgradeMenu.Stat.BPPU:
-			if dolly.dolly_pick_up.request_box_amount == stats[stat][2]:
-				return
-			dolly.dolly_pick_up.request_box_amount += 1
-			menu.set_stat(UpgradeMenu.Stat.BPPU, dolly.dolly_pick_up.request_box_amount)
+			stats[stat][0] += 1
+			dolly.dolly_pick_up.request_box_amount = stats[stat][0]
 			print_debug("BPPU UPGRADED")
 		UpgradeMenu.Stat.DC:
-			if dropoff.max_boxes == stats[stat][2]:
-				return
-			dropoff.max_boxes += 1
-			menu.set_stat(UpgradeMenu.Stat.DC, dropoff.max_boxes)
+			stats[stat][0] += 1
+			dropoff.max_boxes = stats[stat][0]
 			print_debug("DC UPGRADED")
 		UpgradeMenu.Stat.BPDO:
-			if dolly.dolly_drop_off.box_drop_amount == stats[stat][2]:
-				return
-			dolly.dolly_drop_off.box_drop_amount += 1
-			menu.set_stat(UpgradeMenu.Stat.BPDO, dolly.dolly_drop_off.box_drop_amount)
+			stats[stat][0] += 1
+			dolly.dolly_drop_off.box_drop_amount = stats[stat][0]
 			print_debug("BPDO UPGRADED")
 		UpgradeMenu.Stat.BST:
-			if is_equal_approx(box_spawner.box_spawn_time, stats[stat][2]):
-				return
-			box_spawner.box_spawn_time -= 0.5
-			menu.set_stat(UpgradeMenu.Stat.BST, box_spawner.box_spawn_time)
+			stats[stat][0] -= 0.5
+			box_spawner.box_spawn_time = stats[stat][0]
 			print_debug("BST UPGRADED")
 		UpgradeMenu.Stat.DT:
-			if is_equal_approx(delivery_timer.wait_time, stats[stat][2]):
-				return
-			delivery_timer.wait_time -= 0.5
-			menu.set_stat(UpgradeMenu.Stat.DT, delivery_timer.wait_time)
+			stats[stat][0] -= 0.5
+			delivery_timer.wait_time = stats[stat][0]
 			print_debug("DT UPGRADED")
 		UpgradeMenu.Stat.BP:
 			print_debug("YOU WIN")
 			GameLoader.load_scene("res://scenes/end_screen.tscn")
 
+	if stats[stat][0] is int:
+		if stats[stat][0] == stats[stat][2]:
+			menu.set_button_max(stat)
+	elif stats[stat][0] is float:
+		if is_equal_approx(stats[stat][0], stats[stat][2]):
+			menu.set_button_max(stat)
+
+	menu.set_stat(stat, stats[stat][0])
 	menu.update_money(-cost)
 
 
