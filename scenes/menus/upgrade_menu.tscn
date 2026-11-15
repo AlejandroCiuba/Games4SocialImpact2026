@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://kie8wa4ajcg6"]
 
 [ext_resource type="Script" uid="uid://bm4tipap5dihw" path="res://scenes/menus/upgrade_menu.gd" id="1_j4pd8"]
-[ext_resource type="AudioStream" uid="uid://dg8rydexwgbhu" path="res://assets/sfx/gain_money.wav" id="2_vsubm"]
+[ext_resource type="AudioStream" uid="uid://cgx8pal4wjadk" path="res://assets/sfx/cash_register.wav" id="2_vsubm"]
 
 [node name="Upgrade Menu" type="Control" unique_id=605773139]
 layout_mode = 3
