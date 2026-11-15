@@ -2,9 +2,48 @@
 
 [ext_resource type="Script" uid="uid://b10wwmkpj8bvg" path="res://scenes/ents/dolly/dolly.gd" id="1_35j3f"]
 [ext_resource type="Texture2D" uid="uid://d07hoydd1umt6" path="res://assets/Sprites/Dolly.png" id="2_2gaht"]
+[ext_resource type="Script" uid="uid://bdav63ryyu2s4" path="res://scenes/ents/dolly/dolly_animation.gd" id="2_6sxxr"]
 [ext_resource type="Script" uid="uid://p6em5qfoh1wo" path="res://scenes/ents/dolly/dolly_movement.gd" id="3_cof5m"]
+[ext_resource type="Texture2D" uid="uid://ctsfghiidm7sp" path="res://assets/Sprites/Frontwheel.png" id="3_y30vw"]
 [ext_resource type="Script" uid="uid://bn3ryuux14kh6" path="res://scenes/ents/dolly/dolly_pick_up.gd" id="4_lg6ot"]
 [ext_resource type="Script" uid="uid://d3q0mm03j8nh0" path="res://scenes/ents/dolly/dolly_drop_off.gd" id="5_2gaht"]
+
+[sub_resource type="Animation" id="Animation_3fyqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WheelSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6sxxr"]
+resource_name = "wheel_spine"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WheelSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fyqg"]
+_data = {
+&"RESET": SubResource("Animation_3fyqg"),
+&"wheel_spin": SubResource("Animation_6sxxr")
+}
 
 [node name="Dolly" type="CharacterBody2D" unique_id=1601336592 node_paths=PackedStringArray("dolly_movement", "dolly_pick_up", "dolly_drop_off")]
 script = ExtResource("1_35j3f")
@@ -12,17 +51,32 @@ dolly_movement = NodePath("DollyMovement")
 dolly_pick_up = NodePath("DollyPickUp")
 dolly_drop_off = NodePath("DollyDropOff")
 
-[node name="DollySprite" type="Sprite2D" parent="." unique_id=4114295]
+[node name="DollyAnimation" type="Node2D" parent="." unique_id=1662642592 node_paths=PackedStringArray("dolly", "dc", "dolly_sprite", "wheel_sprite", "anim")]
+script = ExtResource("2_6sxxr")
+dolly = NodePath("..")
+dc = NodePath("../CollisionShape2D")
+dolly_sprite = NodePath("DollySprite")
+wheel_sprite = NodePath("WheelSprite")
+anim = NodePath("AnimationPlayer")
+
+[node name="DollySprite" type="Sprite2D" parent="DollyAnimation" unique_id=4114295]
 scale = Vector2(0.39999986, 0.39999986)
 texture = ExtResource("2_2gaht")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1440133575]
-polygon = PackedVector2Array(-29, -36, -17, 35, 26, 43, 39, 1, 27, 0, 18, 36, -12, 28, -22, -38)
+[node name="WheelSprite" type="Sprite2D" parent="DollyAnimation" unique_id=499579035]
+position = Vector2(-12, 32.000004)
+scale = Vector2(0.8066667, 0.8066667)
+texture = ExtResource("3_y30vw")
 
-[node name="DollyMovement" type="Node2D" parent="." unique_id=1797003254 node_paths=PackedStringArray("dolly", "dolly_sprite")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DollyAnimation" unique_id=1951984270]
+libraries/ = SubResource("AnimationLibrary_3fyqg")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1440133575]
+polygon = PackedVector2Array(-29, -36, -18, 37, 25, 39, 41, -38, 33, -39, 20, 29, -12, 28, -22, -38)
+
+[node name="DollyMovement" type="Node2D" parent="." unique_id=1797003254 node_paths=PackedStringArray("dolly")]
 script = ExtResource("3_cof5m")
 dolly = NodePath("..")
-dolly_sprite = NodePath("../DollySprite")
 
 [node name="DollyPickUp" type="Node2D" parent="." unique_id=1235472174]
 script = ExtResource("4_lg6ot")

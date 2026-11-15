@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://x6hmbqvcwrm0"]
 
 [ext_resource type="PackedScene" uid="uid://ktbek631qo4n" path="res://scenes/ents/destinations/dropoffdest.tscn" id="1_5sj5x"]
+[ext_resource type="Texture2D" uid="uid://c3ml21cf42u6w" path="res://assets/Sprites/light_texture.png" id="2_0y6r7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
 size = Vector2(76, 134)
@@ -47,3 +48,9 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=222150642]
 position = Vector2(77, -118)
 shape = SubResource("RectangleShape2D_0y6r7")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2118717744]
+position = Vector2(-508.99997, 35)
+scale = Vector2(2.2943397, 0.54638124)
+energy = 0.44
+texture = ExtResource("2_0y6r7")

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dvq1bpvvlv5p4" path="res://scenes/environment/clock.tscn" id="3_tkfpm"]
 [ext_resource type="PackedScene" uid="uid://drllud4wviu17" path="res://scenes/ents/pick_up.tscn" id="4_2t44s"]
 [ext_resource type="PackedScene" uid="uid://x6hmbqvcwrm0" path="res://scenes/ents/drop_off.tscn" id="5_klww0"]
-[ext_resource type="PackedScene" uid="uid://0xtqhyge5hnm" path="res://scenes/box_spawner.tscn" id="6_klww0"]
+[ext_resource type="PackedScene" uid="uid://0xtqhyge5hnm" path="res://scenes/environment/box_spawner.tscn" id="6_klww0"]
 
 [node name="GameStage" type="Node2D" unique_id=1401212467 node_paths=PackedStringArray("dolly", "pickup", "dropoff", "box_spawner", "box_dolly_point", "box_dolly_drop_point")]
 script = ExtResource("1_lbwk6")

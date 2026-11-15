@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://0xtqhyge5hnm"]
+
+[ext_resource type="Script" uid="uid://cv1xyxrj3ypti" path="res://scenes/environment/box_spawner.gd" id="1_0bwl0"]
+[ext_resource type="PackedScene" uid="uid://1882l0x3dk6q" path="res://scenes/ents/box.tscn" id="2_kuow0"]
+[ext_resource type="Texture2D" uid="uid://dwaxg7fdsbwrs" path="res://assets/Sprites/ChuteA.png" id="3_marvr"]
+[ext_resource type="Script" uid="uid://tibxs5sjhkd5" path="res://scenes/environment/box_animations.gd" id="4_stgoy"]
+
+[sub_resource type="Animation" id="Animation_7v3dt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.16580628]
+}
+
+[sub_resource type="Animation" id="Animation_stgoy"]
+resource_name = "shake"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.16580628, -0.4956735, 0.16580628]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7v3dt"]
+_data = {
+&"RESET": SubResource("Animation_7v3dt"),
+&"shake": SubResource("Animation_stgoy")
+}
+
+[node name="BoxSpawner" type="Node2D" unique_id=2002777395 node_paths=PackedStringArray("box_spawn_point")]
+script = ExtResource("1_0bwl0")
+box_spawn_point = NodePath("BoxSpawnPoint")
+box_scene = ExtResource("2_kuow0")
+
+[node name="BoxTimer" type="Timer" parent="." unique_id=2011492094]
+unique_name_in_owner = true
+autostart = true
+
+[node name="BoxSpawnPoint" type="Node2D" parent="." unique_id=243687692]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=111124102]
+rotation = 0.16580628
+texture = ExtResource("3_marvr")
+
+[node name="BoxAnimations" type="Node2D" parent="." unique_id=146817833 node_paths=PackedStringArray("box_spawner")]
+script = ExtResource("4_stgoy")
+box_spawner = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BoxAnimations" unique_id=1023069178]
+libraries/ = SubResource("AnimationLibrary_7v3dt")

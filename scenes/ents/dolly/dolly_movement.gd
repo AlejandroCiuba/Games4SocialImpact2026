@@ -11,8 +11,6 @@ signal arrived(target: Vector2)
 @export var speed: float = 500.0
 @export var destination_tolerance: float = 10.0
 
-@export var dolly_sprite: Sprite2D
-
 @export var destinations: Array[Destination]
 
 @onready var _target: Vector2 = global_position
@@ -45,12 +43,6 @@ func _physics_process(delta: float) -> void:
 	if global_position.distance_to(_target) > destination_tolerance:
 		dolly.velocity = global_position.direction_to(_target) * speed * delta
 		dolly.move_and_collide(dolly.velocity)
-
-		if dolly.velocity.x > 0.0:
-			dolly_sprite.flip_h = false
-		else:
-			dolly_sprite.flip_h = true
-
 
 	else:
 		dolly.velocity = Vector2.ZERO
