@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cv1xyxrj3ypti" path="res://scenes/environment/box_spawner.gd" id="1_0bwl0"]
 [ext_resource type="PackedScene" uid="uid://1882l0x3dk6q" path="res://scenes/ents/box.tscn" id="2_kuow0"]
-[ext_resource type="Texture2D" uid="uid://dwaxg7fdsbwrs" path="res://assets/Sprites/ChuteA.png" id="3_marvr"]
+[ext_resource type="Texture2D" uid="uid://cynmugg1wwnku" path="res://assets/Sprites/ChuteC.png" id="3_stgoy"]
 [ext_resource type="Script" uid="uid://tibxs5sjhkd5" path="res://scenes/environment/box_animations.gd" id="4_stgoy"]
 
 [sub_resource type="Animation" id="Animation_7v3dt"]
@@ -54,7 +54,7 @@ autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=111124102]
 rotation = 0.16580628
-texture = ExtResource("3_marvr")
+texture = ExtResource("3_stgoy")
 
 [node name="BoxAnimations" type="Node2D" parent="." unique_id=146817833 node_paths=PackedStringArray("box_spawner")]
 script = ExtResource("4_stgoy")

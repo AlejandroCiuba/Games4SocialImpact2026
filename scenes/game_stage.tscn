@@ -69,8 +69,8 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="BoxSpawner" parent="." unique_id=2002777395 node_paths=PackedStringArray("boxes") instance=ExtResource("6_klww0")]
-position = Vector2(242, 65)
-scale = Vector2(1, 1.003254)
+position = Vector2(251.00002, 56)
+scale = Vector2(2.3541667, 2.3618274)
 boxes = NodePath("../Boxes")
 box_spawn_time = 0.75
 

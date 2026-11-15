@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bjrhojhfbqe42"]
+
+[ext_resource type="Script" uid="uid://8eepu2w2nhec" path="res://scenes/ents/dolly/person.gd" id="1_drmju"]
+[ext_resource type="Texture2D" uid="uid://tnv1er2tkyip" path="res://assets/Sprites/LeftLeg.png" id="1_qh45j"]
+[ext_resource type="Texture2D" uid="uid://04upj3ij5pgt" path="res://assets/Sprites/HeroLegless.png" id="1_y0hmf"]
+[ext_resource type="Texture2D" uid="uid://b8lc5mtxd4g2b" path="res://assets/Sprites/RightLeg.png" id="2_drmju"]
+
+[sub_resource type="Animation" id="Animation_drmju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Legs/RightLeg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 23)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Legs/LeftLeg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6, 28)]
+}
+
+[sub_resource type="Animation" id="Animation_d2r2w"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Legs/RightLeg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(6, 23), Vector2(6, 27), Vector2(6, 23)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Legs/LeftLeg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-6, 28), Vector2(-6, 25), Vector2(-6, 28)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ke0m"]
+_data = {
+&"RESET": SubResource("Animation_drmju"),
+&"walk": SubResource("Animation_d2r2w")
+}
+
+[node name="Person" type="Node2D" unique_id=407835734]
+script = ExtResource("1_drmju")
+
+[node name="Legs" type="Node2D" parent="." unique_id=915513075]
+position = Vector2(-5, 0)
+
+[node name="LeftLeg" type="Sprite2D" parent="Legs" unique_id=1612811877]
+position = Vector2(-6, 28)
+texture = ExtResource("1_qh45j")
+
+[node name="RightLeg" type="Sprite2D" parent="Legs" unique_id=1148218105]
+position = Vector2(6, 23)
+texture = ExtResource("2_drmju")
+
+[node name="Person" type="Sprite2D" parent="." unique_id=1117678350]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_y0hmf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1356672733]
+libraries/ = SubResource("AnimationLibrary_5ke0m")

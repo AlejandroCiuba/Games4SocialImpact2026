@@ -5,6 +5,7 @@ class_name DollyMovement
 signal arrived(target: Vector2)
 
 @export var dolly: CharacterBody2D
+@export var dolly_anim: DollyAnimation
 
 @export_category("Dolly Settings")
 
@@ -19,6 +20,10 @@ signal arrived(target: Vector2)
 func set_target(target: Vector2) -> void:
 	print_debug("Global Position: ", global_position)
 	print_debug("Target: ", target)
+	if target.x < global_position.x:
+		dolly_anim.flip_h = true
+	else:
+		dolly_anim.flip_h = false
 	_target = target
 
 
