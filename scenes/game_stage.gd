@@ -16,8 +16,8 @@ extends Node2D
 @export var stats: Dictionary = {
 	UpgradeMenu.Stat.SPEED: [100.0, 2, 400.0],
 	UpgradeMenu.Stat.TABLECAP: [5, 1, 40],
-	UpgradeMenu.Stat.BPPU: [1, 5, 10],
-	UpgradeMenu.Stat.DC: [5, 10, 30],
+	UpgradeMenu.Stat.BPPU: [1, 5, 5],
+	UpgradeMenu.Stat.DC: [5, 10, 10],
 	UpgradeMenu.Stat.BPDO: [1, 4, 5],
 	UpgradeMenu.Stat.BST: [6.0, 15, 1.0],
 	UpgradeMenu.Stat.DT: [5.0, 15, 1.0],
