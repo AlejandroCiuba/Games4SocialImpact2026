@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dfeprddrsnfvo"]
 
-[ext_resource type="PackedScene" uid="uid://dbic0mndxe61j" path="res://scenes/start.tscn" id="1_he1sj"]
-[ext_resource type="PackedScene" uid="uid://d1gdim75bpo3o" path="res://scenes/credits.tscn" id="2_r2jwc"]
-[ext_resource type="PackedScene" uid="uid://bokcrqn5splat" path="res://scenes/options.tscn" id="3_hm208"]
+[ext_resource type="PackedScene" uid="uid://dbic0mndxe61j" path="res://scenes/menus/start.tscn" id="1_he1sj"]
+[ext_resource type="PackedScene" uid="uid://d1gdim75bpo3o" path="res://scenes/menus/credits.tscn" id="2_r2jwc"]
+[ext_resource type="PackedScene" uid="uid://bokcrqn5splat" path="res://scenes/menus/options.tscn" id="3_hm208"]
 
 [node name="StartScreen" type="CanvasLayer" unique_id=824465646]
 

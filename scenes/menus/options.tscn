@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bokcrqn5splat"]
 
 [ext_resource type="Texture2D" uid="uid://gj6jnwkv2frm" path="res://assets/Sprites/Background.png" id="1_2iy26"]
-[ext_resource type="Script" uid="uid://cuhd88g4euh1v" path="res://scenes/options.gd" id="1_kv8mn"]
+[ext_resource type="Script" uid="uid://cuhd88g4euh1v" path="res://scenes/menus/options.gd" id="1_kv8mn"]
 [ext_resource type="Theme" uid="uid://ccvnrvyo0oos" path="res://resources/title_screen.tres" id="3_1sggn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aihbh"]
@@ -46,7 +46,7 @@ theme_override_colors/font_color = Color(0.81960785, 0.8117647, 0.4117647, 1)
 theme_override_font_sizes/font_size = 86
 text = "HOW TO PLAY"
 
-[node name="HowToPlay" type="TextEdit" parent="." unique_id=818736005]
+[node name="HowToPlay" type="RichTextLabel" parent="." unique_id=1439865556]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,10 +59,11 @@ offset_right = 595.5
 offset_bottom = 196.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.2627451, 0.2627451, 0.2627451, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_aihbh")
-text = "Welcome to Happy Inc.! Your goal:  get promoted!!
+text = "Welcome to Happy Inc.! We value that you have decided to dedicate your life to Happy Inc.'s important work: aiding our customers in their international affairs through fast, reliable delivery of our happy products. Your job as a Warehouse Management Delivery Specialist is to make sure our products go from our state-of-the-art packing system to our world class happy-mobiles as fast as possible. Time is of the essence and who knows, you might just earn yourself a promotion at the end of this! 
+
+(Your goal:  get promoted!!)
 
 Click the pickup platform on the left to load your dolly, then click the 
 truck on the right to complete deliveries and earn money. Unlock 

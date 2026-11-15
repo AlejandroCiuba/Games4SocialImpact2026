@@ -17,7 +17,7 @@ extends Node2D
 
 
 func starting_stats() -> void:
-	
+
 	# Speed
 	dolly.dolly_movement.speed = 100.0
 	menu.set_stat(UpgradeMenu.Stat.SPEED, 100.0)
@@ -65,7 +65,7 @@ func _on_boxes_dropped(amount: int) -> void:
 
 	if dropoff.out_for_delivery:
 		return
-	
+
 	for box in _get_boxes(Box.Status.DOLLY, amount):
 
 		$Destinations/DropOff/DropOffAnimations/AnimationPlayer2.play("smoke")
@@ -79,7 +79,7 @@ func _on_boxes_dropped(amount: int) -> void:
 			PhysicsServer2D.BODY_STATE_TRANSFORM,
 			Transform2D.IDENTITY.translated(box_dolly_drop_point.global_position)
 		)
-		
+
 		if dropoff.box_count == dropoff.max_boxes:
 			print_debug("DELIVERY SCHEDULED")
 			delivery_scheduled()
@@ -97,10 +97,10 @@ func _on_boxes_requested(amount: int) -> void:
 		return
 
 	for box in _get_boxes(Box.Status.PICKUP, amount):
-		
+
 		$Destinations/PickUp/AnimationPlayer.play("smoke")
 		$Destinations/PickUp/AudioStreamPlayer.play()
-		
+
 		box.curr_status = Box.Status.DOLLY
 		pickup.box_count -= 1
 		# https://stackoverflow.com/questions/77721286/set-a-rigid-body-position-in-godot-4
@@ -109,7 +109,7 @@ func _on_boxes_requested(amount: int) -> void:
 			PhysicsServer2D.BODY_STATE_TRANSFORM,
 			Transform2D.IDENTITY.translated(box_dolly_point.global_position)
 		)
-		
+
 	if pickup.box_count < pickup.max_boxes and box_spawner.box_timer.is_stopped():
 		box_spawner.start_spawning()
 
@@ -125,12 +125,12 @@ func _on_box_spawned(box: Box) -> void:
 
 func _on_delivery_timer_timeout() -> void:
 	dropoff.return_for_delivery()
-	
-	
+
+
 func _on_give_payment(value: int) -> void:
 	menu.update_money(value)
-	
-	
+
+
 func _on_stat_updated(stat: UpgradeMenu.Stat) -> void:
 
 	var cost: int = 0
@@ -204,24 +204,24 @@ func _on_stat_updated(stat: UpgradeMenu.Stat) -> void:
 				return
 			print_debug("YOU WIN")
 			GameLoader.load_scene("res://scenes/end_screen.tscn")
-	
+
 	menu.update_money(-cost)
-			
+
 
 
 func _ready() -> void:
 
 	dolly.dolly_pick_up.request_boxes.connect(_on_boxes_requested)
 	dolly.dolly_drop_off.drop_boxes.connect(_on_boxes_dropped)
-	
+
 	box_spawner.box_spawned.connect(_on_box_spawned)
-	
+
 	dropoff.give_payment.connect(_on_give_payment)
 
 	delivery_timer.wait_time = dropoff.delivery_time
 	delivery_timer.timeout.connect(_on_delivery_timer_timeout)
-	
+
 	menu.stat_updated.connect(_on_stat_updated)
-	
+
 	menu.override_money(0)
 	starting_stats()

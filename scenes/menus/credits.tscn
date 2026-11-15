@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1gdim75bpo3o"]
 
 [ext_resource type="Texture2D" uid="uid://gj6jnwkv2frm" path="res://assets/Sprites/Background.png" id="1_0bpdh"]
-[ext_resource type="Script" uid="uid://bq7l0qdxa17jw" path="res://scenes/credits.gd" id="1_0ctdu"]
+[ext_resource type="Script" uid="uid://bq7l0qdxa17jw" path="res://scenes/menus/credits.gd" id="1_0ctdu"]
 [ext_resource type="Theme" uid="uid://ccvnrvyo0oos" path="res://resources/title_screen.tres" id="2_2ckv8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aihbh"]
@@ -46,7 +46,7 @@ theme_override_colors/font_color = Color(0.81960785, 0.8117647, 0.4117647, 1)
 theme_override_font_sizes/font_size = 86
 text = "CREDITS"
 
-[node name="credits" type="TextEdit" parent="." unique_id=818736005]
+[node name="credits" type="RichTextLabel" parent="." unique_id=766303262]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,8 +59,7 @@ offset_right = 595.5
 offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.2627451, 0.2627451, 0.2627451, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_aihbh")
 text = "Alejandro Ciuba - Game and UI Developer 
 
@@ -68,7 +67,9 @@ Anton Ullrich - Graphic Designer
 
 Luc Ta - Music Composer
 
-Shakirah Cooper - Start, Options, and Credits Developer"
+Shakirah Cooper - Start, Options, and Credits Developer
+
+Game made using Godot. Music made in Musescore. Art made in Krita and Inkscape. Font is ChelseaMarket - Regular."
 
 [node name="TitleScreen" type="Button" parent="." unique_id=1401269879]
 layout_mode = 0

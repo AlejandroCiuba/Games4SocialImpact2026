@@ -340,5 +340,6 @@ libraries/ = SubResource("AnimationLibrary_1qiap")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2107562811]
 stream = ExtResource("9_hyoog")
+volume_db = -10.668
 
 [editable path="DropOffDest"]

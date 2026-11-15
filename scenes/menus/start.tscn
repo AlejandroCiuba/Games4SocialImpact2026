@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dbic0mndxe61j"]
 
 [ext_resource type="Texture2D" uid="uid://gj6jnwkv2frm" path="res://assets/Sprites/Background.png" id="1_bodal"]
-[ext_resource type="Script" uid="uid://620qk6d8wrop" path="res://scenes/start.gd" id="1_kdmts"]
+[ext_resource type="Script" uid="uid://620qk6d8wrop" path="res://scenes/menus/start.gd" id="1_kdmts"]
 [ext_resource type="Theme" uid="uid://ccvnrvyo0oos" path="res://resources/title_screen.tres" id="2_u80x2"]
 [ext_resource type="PackedScene" uid="uid://dvq1bpvvlv5p4" path="res://scenes/environment/clock.tscn" id="4_kdmts"]
 [ext_resource type="AudioStream" uid="uid://00h0wvodbrdt" path="res://assets/music/dolly_title_final.wav" id="5_0auqf"]
