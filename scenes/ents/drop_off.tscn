@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://c3ml21cf42u6w" path="res://assets/Sprites/light_texture.png" id="2_0y6r7"]
 [ext_resource type="Texture2D" uid="uid://bsgovaohujhs1" path="res://assets/Sprites/ClosedGate.png" id="2_1mkln"]
 [ext_resource type="Script" uid="uid://bdsuvgpdqykax" path="res://scenes/ents/drop_off_animations.gd" id="3_tgr43"]
+[ext_resource type="Texture2D" uid="uid://bgvwb3e0fha33" path="res://assets/Sprites/TruckOpen.png" id="4_xjpn0"]
 [ext_resource type="Texture2D" uid="uid://cxva8ulgv2tgl" path="res://assets/Sprites/EmptyGate.png" id="5_uif7f"]
+[ext_resource type="Texture2D" uid="uid://bpobulsfy1544" path="res://assets/Sprites/TruckClosed.png" id="7_0vc35"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
 size = Vector2(76, 134)
@@ -12,43 +14,31 @@ size = Vector2(76, 134)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y6r7"]
 size = Vector2(20, 364)
 
-[sub_resource type="Animation" id="Animation_xjpn0"]
+[sub_resource type="Animation" id="Animation_jtgws"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%DropOffDest/GateSprite:texture")
+tracks/0/path = NodePath("%DropOffDest/TruckSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_1mkln")]
+"values": [ExtResource("4_xjpn0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%DropOffDest/TruckSprite:visible")
+tracks/1/path = NodePath("%DropOffDest/TruckSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../PointLight2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(-1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_0vc35"]
@@ -129,26 +119,77 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_deajg"]
+resource_name = "truck_close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%DropOffDest/TruckSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_xjpn0"), ExtResource("7_0vc35")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DropOffDest/TruckSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-1, 1), Vector2(18, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_xjpn0"]
+resource_name = "truck_opened2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%DropOffDest/TruckSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_0vc35"), ExtResource("4_xjpn0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DropOffDest/TruckSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(18, -4), Vector2(-1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jtgws"]
 _data = {
-&"RESET": SubResource("Animation_xjpn0"),
+&"RESET": SubResource("Animation_jtgws"),
 &"gate_closed": SubResource("Animation_0vc35"),
-&"gate_opened": SubResource("Animation_hyoog")
+&"gate_opened": SubResource("Animation_hyoog"),
+&"truck_closed": SubResource("Animation_deajg"),
+&"truck_opened": SubResource("Animation_xjpn0")
 }
 
 [node name="DropOff" type="Node2D" unique_id=1140804059]
 
-[node name="DropOffDest" parent="." unique_id=320559756 node_paths=PackedStringArray("stop_point") instance=ExtResource("1_5sj5x")]
+[node name="DropOffDest" parent="." unique_id=320559756 node_paths=PackedStringArray("anim_controller", "stop_point") instance=ExtResource("1_5sj5x")]
 unique_name_in_owner = true
+anim_controller = NodePath("../DropOffAnimations")
 max_boxes = 2
 delivery_time = 5.0
 stop_point = NodePath("DropOffStopPoint")
-
-[node name="GateSprite" parent="DropOffDest" index="0" unique_id=1152491190]
-texture = ExtResource("2_1mkln")
-
-[node name="TruckSprite" parent="DropOffDest" index="1" unique_id=1188049629]
-visible = false
 
 [node name="DropOffStopPoint" type="Node2D" parent="DropOffDest" unique_id=354674071]
 position = Vector2(-150, 0)
@@ -183,15 +224,14 @@ position = Vector2(77, -118)
 shape = SubResource("RectangleShape2D_0y6r7")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2118717744]
-visible = false
 position = Vector2(-508.99997, 35)
 scale = Vector2(2.2943397, 0.54638124)
 energy = 0.44
 texture = ExtResource("2_0y6r7")
+metadata/_edit_lock_ = true
 
-[node name="DropOffAnimations" type="Node2D" parent="." unique_id=991352022 node_paths=PackedStringArray("drop_off", "anim")]
+[node name="DropOffAnimations" type="Node2D" parent="." unique_id=991352022 node_paths=PackedStringArray("anim")]
 script = ExtResource("3_tgr43")
-drop_off = NodePath("../DropOffDest")
 anim = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DropOffAnimations" unique_id=1988087051]

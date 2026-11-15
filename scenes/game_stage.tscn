@@ -68,6 +68,7 @@ unique_name_in_owner = true
 
 [node name="DeliveryTimer" type="Timer" parent="." unique_id=571891587]
 unique_name_in_owner = true
+one_shot = true
 
 [node name="BoxSpawner" parent="." unique_id=2002777395 node_paths=PackedStringArray("boxes") instance=ExtResource("6_klww0")]
 position = Vector2(251.00002, 56)

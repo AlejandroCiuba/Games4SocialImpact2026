@@ -52,7 +52,9 @@ func _on_boxes_dropped(amount: int) -> void:
 		)
 		
 		if dropoff.box_count == dropoff.max_boxes:
+			print_debug("DELIVERY SCHEDULED")
 			delivery_scheduled()
+			return
 
 
 func delivery_scheduled() -> void:
