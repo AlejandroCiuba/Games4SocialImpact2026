@@ -11,17 +11,14 @@ signal drop_boxes(amount: int)
 
 
 func _on_entered(_body: Node2D) -> void:
-	print_debug("Dolly Entered Drop Off Area")
 	ddt.start()
 
 
 func _on_exited(_body: Node2D) -> void:
-	print_debug("Dolly Exited Drop Off Area")
 	ddt.stop()
 
 
 func _on_timeout() -> void:
-	print_debug("Box Amount Requested: ", box_drop_amount)
 	drop_boxes.emit(box_drop_amount)
 
 

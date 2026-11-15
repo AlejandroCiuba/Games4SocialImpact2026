@@ -21,7 +21,6 @@ func _on_exited(_body: Node2D) -> void:
 
 
 func _on_timeout() -> void:
-	print_debug("Box Amount Requested: ", request_box_amount)
 	request_boxes.emit(request_box_amount)
 
 

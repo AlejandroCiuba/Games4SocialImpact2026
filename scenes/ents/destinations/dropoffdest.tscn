@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ktbek631qo4n"]
+
+[ext_resource type="Script" uid="uid://dicljwjsdaktg" path="res://scenes/ents/destinations/dropoffdest.gd" id="1_joern"]
+[ext_resource type="Texture2D" uid="uid://bgvwb3e0fha33" path="res://assets/Sprites/TruckOpen.png" id="2_ux5ki"]
+[ext_resource type="Texture2D" uid="uid://cxva8ulgv2tgl" path="res://assets/Sprites/EmptyGate.png" id="2_wiqai"]
+[ext_resource type="AudioStream" uid="uid://dovlt3yjwecqd" path="res://assets/sfx/truck_leaving.wav" id="4_dpvq3"]
+[ext_resource type="AudioStream" uid="uid://ctspvkwxx1fqi" path="res://assets/sfx/truck_arrival.wav" id="5_xle36"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uk3g"]
+size = Vector2(124, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qf70"]
+size = Vector2(212, 233)
+
+[node name="DropOff" type="Node2D" unique_id=320559756]
+script = ExtResource("1_joern")
+metadata/_custom_type_script = "uid://d285mlq1x0t2w"
+
+[node name="GateSprite" type="Sprite2D" parent="." unique_id=1152491190]
+position = Vector2(5, 12)
+texture = ExtResource("2_wiqai")
+
+[node name="TruckSprite" type="Sprite2D" parent="." unique_id=1188049629]
+position = Vector2(-1, 1)
+texture = ExtResource("2_ux5ki")
+
+[node name="BoxPlatform" type="StaticBody2D" parent="." unique_id=610567589]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxPlatform" unique_id=1490625776]
+position = Vector2(-4, 66.5)
+shape = SubResource("RectangleShape2D_1uk3g")
+debug_color = Color(0.7303025, 0.29294345, 0.9222649, 0.41960785)
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=371039159]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=242158419]
+position = Vector2(-3, 2.5)
+shape = SubResource("RectangleShape2D_6qf70")
+
+[node name="TruckSoundLeaving" type="AudioStreamPlayer" parent="." unique_id=814398450]
+stream = ExtResource("4_dpvq3")
+bus = &"Sound Effects"
+
+[node name="TruckSoundArriving" type="AudioStreamPlayer" parent="." unique_id=1542373834]
+stream = ExtResource("5_xle36")
+bus = &"Sound Effects"
