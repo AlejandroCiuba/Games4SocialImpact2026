@@ -6,6 +6,7 @@ extends Node2D
 @export var pickup: PickUpDest
 @export var dropoff: DropOffDest
 @export var box_spawner: BoxSpawner
+@export var menu: UpgradeMenu
 
 @export_category("Move Locations")
 @export var box_dolly_point: Node2D
@@ -13,6 +14,31 @@ extends Node2D
 
 @onready var delivery_timer: Timer = %DeliveryTimer
 @onready var boxes: Node2D = %Boxes
+
+
+func starting_stats() -> void:
+	
+	# Speed
+	dolly.dolly_movement.speed = 100.0
+	menu.set_stat(UpgradeMenu.Stat.SPEED, 100.0)
+	# Table Capacity
+	pickup.max_boxes = 5
+	menu.set_stat(UpgradeMenu.Stat.TABLECAP, 5)
+	# Boxes Per Pick Up
+	dolly.dolly_pick_up.request_box_amount = 1
+	menu.set_stat(UpgradeMenu.Stat.BPPU, 1)
+	# Delivery Capacity
+	dropoff.max_boxes = 5
+	menu.set_stat(UpgradeMenu.Stat.DC, 5)
+	# Boxes Per Drop Off
+	dolly.dolly_drop_off.box_drop_amount = 1
+	menu.set_stat(UpgradeMenu.Stat.BPDO, 1)
+	# Box Spawn
+	box_spawner.box_spawn_time = 6.0
+	menu.set_stat(UpgradeMenu.Stat.BST, 6.0)
+	# Delivery Time
+	delivery_timer.wait_time = 5.0
+	menu.set_stat(UpgradeMenu.Stat.DT, 5.0)
 
 
 func _get_boxes(type: Box.Status, amount: int) -> Array[Node]:
@@ -99,6 +125,87 @@ func _on_box_spawned(box: Box) -> void:
 
 func _on_delivery_timer_timeout() -> void:
 	dropoff.return_for_delivery()
+	
+	
+func _on_give_payment(value: int) -> void:
+	menu.update_money(value)
+	
+	
+func _on_stat_updated(stat: UpgradeMenu.Stat) -> void:
+
+	var cost: int = 0
+	match stat:
+		UpgradeMenu.Stat.SPEED:
+			cost = 2
+			if cost > menu.money:
+				return
+			if is_equal_approx(dolly.dolly_movement.speed, 400.0):
+				return
+			dolly.dolly_movement.speed += 50.0
+			menu.set_stat(UpgradeMenu.Stat.SPEED, dolly.dolly_movement.speed)
+			print_debug("SPEED UPGRADED")
+		UpgradeMenu.Stat.TABLECAP:
+			cost = 1
+			if cost > menu.money:
+				return
+			if pickup.max_boxes == 40:
+				return
+			pickup.max_boxes += 1
+			menu.set_stat(UpgradeMenu.Stat.TABLECAP, pickup.max_boxes)
+			print_debug("TABLECAP UPGRADED")
+		UpgradeMenu.Stat.BPPU:
+			cost = 5
+			if cost > menu.money:
+				return
+			if dolly.dolly_pick_up.request_box_amount == 10:
+				return
+			dolly.dolly_pick_up.request_box_amount += 1
+			menu.set_stat(UpgradeMenu.Stat.BPPU, dolly.dolly_pick_up.request_box_amount)
+			print_debug("BPPU UPGRADED")
+		UpgradeMenu.Stat.DC:
+			cost = 10
+			if cost > menu.money:
+				return
+			if dropoff.max_boxes == 30:
+				return
+			dropoff.max_boxes += 1
+			menu.set_stat(UpgradeMenu.Stat.DC, dropoff.max_boxes)
+			print_debug("DC UPGRADED")
+		UpgradeMenu.Stat.BPDO:
+			cost = 4
+			if cost > menu.money:
+				return
+			if dolly.dolly_drop_off.box_drop_amount == 5:
+				return
+			dolly.dolly_drop_off.box_drop_amount += 1
+			menu.set_stat(UpgradeMenu.Stat.BPDO, dolly.dolly_drop_off.box_drop_amount)
+			print_debug("BPDO UPGRADED")
+		UpgradeMenu.Stat.BST:
+			cost = 15
+			if cost > menu.money:
+				return
+			if is_equal_approx(box_spawner.box_spawn_time, 1.0):
+				return
+			box_spawner.box_spawn_time -= 0.5
+			menu.set_stat(UpgradeMenu.Stat.BST, box_spawner.box_spawn_time)
+			print_debug("BST UPGRADED")
+		UpgradeMenu.Stat.DT:
+			cost = 15
+			if cost > menu.money:
+				return
+			if is_equal_approx(delivery_timer.wait_time, 1.0):
+				return
+			delivery_timer.wait_time -= 0.5
+			menu.set_stat(UpgradeMenu.Stat.DT, delivery_timer.wait_time)
+			print_debug("DT UPGRADED")
+		UpgradeMenu.Stat.BP:
+			cost = 100
+			if cost > menu.money:
+				return
+			print_debug("YOU WIN")
+	
+	menu.update_money(-cost)
+			
 
 
 func _ready() -> void:
@@ -107,6 +214,13 @@ func _ready() -> void:
 	dolly.dolly_drop_off.drop_boxes.connect(_on_boxes_dropped)
 	
 	box_spawner.box_spawned.connect(_on_box_spawned)
+	
+	dropoff.give_payment.connect(_on_give_payment)
 
 	delivery_timer.wait_time = dropoff.delivery_time
 	delivery_timer.timeout.connect(_on_delivery_timer_timeout)
+	
+	menu.stat_updated.connect(_on_stat_updated)
+	
+	menu.override_money(0)
+	starting_stats()
