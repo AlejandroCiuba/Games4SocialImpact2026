@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dfeprddrsnfvo"]
+
+[ext_resource type="PackedScene" uid="uid://dbic0mndxe61j" path="res://scenes/start.tscn" id="1_he1sj"]
+[ext_resource type="PackedScene" uid="uid://d1gdim75bpo3o" path="res://scenes/credits.tscn" id="2_r2jwc"]
+[ext_resource type="PackedScene" uid="uid://bokcrqn5splat" path="res://scenes/options.tscn" id="3_hm208"]
+
+[node name="StartScreen" type="CanvasLayer" unique_id=824465646]
+
+[node name="Start" parent="." unique_id=1560550618 node_paths=PackedStringArray("credits", "options") instance=ExtResource("1_he1sj")]
+credits = NodePath("../Credits")
+options = NodePath("../Options")
+
+[node name="Credits" parent="." unique_id=732573263 node_paths=PackedStringArray("title") instance=ExtResource("2_r2jwc")]
+visible = false
+title = NodePath("../Start")
+
+[node name="Options" parent="." unique_id=352017170 node_paths=PackedStringArray("title") instance=ExtResource("3_hm208")]
+visible = false
+title = NodePath("../Start")
