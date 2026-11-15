@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://gj6jnwkv2frm" path="res://assets/Sprites/Background.png" id="1_bodal"]
 [ext_resource type="Texture2D" uid="uid://d2j6e4u6n32j7" path="res://assets/startscreenHappyInc.png" id="1_jaeev"]
+[ext_resource type="Script" uid="uid://620qk6d8wrop" path="res://scenes/start.gd" id="1_kdmts"]
 [ext_resource type="Theme" uid="uid://ccvnrvyo0oos" path="res://resources/title_screen.tres" id="2_u80x2"]
 
 [node name="Start" type="Control" unique_id=1560550618]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_kdmts")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1397006419]
 layout_mode = 1
@@ -72,3 +74,7 @@ size_flags_vertical = 6
 theme = ExtResource("2_u80x2")
 text = "Credits"
 alignment = 0
+
+[connection signal="pressed" from="Menu/StartShift" to="." method="_on_start_shift_pressed"]
+[connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/Credits" to="." method="_on_credits_pressed"]
