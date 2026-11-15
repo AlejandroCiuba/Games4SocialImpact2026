@@ -25,6 +25,7 @@ func stop_spawning() -> void:
 
 func _spawn_box() -> void:
 
+	$ChuteSound.play()
 	var b: Box = box_scene.instantiate() as Box
 	boxes.add_child(b)
 	

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cynmugg1wwnku" path="res://assets/Sprites/ChuteC.png" id="3_stgoy"]
 [ext_resource type="Texture2D" uid="uid://dw5ufaej5bljq" path="res://assets/Sprites/smoke.png" id="4_7v3dt"]
 [ext_resource type="Script" uid="uid://tibxs5sjhkd5" path="res://scenes/environment/box_animations.gd" id="4_stgoy"]
+[ext_resource type="AudioStream" uid="uid://d2x0quhvuuko" path="res://assets/sfx/chute.wav" id="6_u848h"]
 
 [sub_resource type="Animation" id="Animation_7v3dt"]
 length = 0.001
@@ -139,3 +140,8 @@ libraries/ = SubResource("AnimationLibrary_7v3dt")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="BoxAnimations" unique_id=988121123]
 libraries/ = SubResource("AnimationLibrary_7v3dt")
+
+[node name="ChuteSound" type="AudioStreamPlayer" parent="." unique_id=1533817941]
+stream = ExtResource("6_u848h")
+volume_db = -20.07
+bus = &"Sound Effects"
