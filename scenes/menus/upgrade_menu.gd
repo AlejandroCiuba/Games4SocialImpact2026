@@ -28,9 +28,8 @@ func write_stat(label: RichTextLabel, value) -> void:
 
 func write_money(value: int) -> void:
 	money_text.text = "$%d" % [value]
-	
-	
-	
+
+
 func set_stat(stat: Stat, amount) -> void:
 	match stat:
 		Stat.SPEED:
@@ -59,7 +58,7 @@ func override_money(value: int) -> void:
 func update_money(amount: int) -> void:
 	money += amount
 	write_money(money)
-	
+
 	if amount > 0:
 		$MoneySound.play()
 
