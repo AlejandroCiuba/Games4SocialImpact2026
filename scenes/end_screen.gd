@@ -14,6 +14,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 
 func _on_closed_box_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
+		$ZoomIn/ClosedBox/ClosedBoxArea.input_pickable = false
 		$Music.play()
 		var tween: Tween = get_tree().create_tween().bind_node(self)
 		tween.set_loops(7)
